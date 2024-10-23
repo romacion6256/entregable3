@@ -15,7 +15,7 @@ usql_to_sql = {
     "LOS_VALORES": "VALUES",
     "ACTUALIZA": "UPDATE",
     "SETEA": "SET",
-    "BORRA_DE_LA": "DELETE FROM",
+    "BORRA_DE_LA_TABLA": "DELETE FROM",
     "ORDENA_POR": "ORDER BY",
     "COMO_MUCHO": "LIMIT",
     "WHERE_DEL_GROUP_BY": "HAVING",
@@ -24,7 +24,7 @@ usql_to_sql = {
     "ENTRE": "BETWEEN",
     "PARECIDO_A": "LIKE",
     "ES_NULO": "IS NULL",
-    "ALTERA_LA_TABLA": "ALTER TABLE",
+    "CAMBIA_LA_TABLA": "ALTER TABLE",
     "AGREGA_LA_COLUMNA": "ADD COLUMN",
     "ELIMINA_LA_COLUMNA": "DROP COLUMN",
     "CREA_LA_TABLA": "CREATE TABLE",
@@ -34,11 +34,12 @@ usql_to_sql = {
     "CLAVE_PRIMA": "PRIMARY KEY",
     "CLAVE_REFERENTE": "FOREIGN KEY",
     "NO_NULO": "NOT NULL",
-    "TRANSFORMA_A": "CAST"
+    "TRANSFORMA_A": "CAST",
+    "Y": "AND",
 }
 
 # Definición de tokens
-tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER']
+tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA']
 
 # Ignorar espacios y tabulaciones
 t_ignore = ' \t'
@@ -47,11 +48,20 @@ t_ignore = ' \t'
 t_GT = r'>'
 t_LT = r'<'
 t_EQ = r'='
+t_LPAREN = r'\('
+t_RPAREN = r'\)'
+t_COMMA = r','
 
 # Definición de números
 def t_NUMBER(t):
     r'\d+'
     t.value = int(t.value)
+    return t
+
+# Definición de cadenas de texto
+def t_STRING(t):
+    r'\'[^\']*\''
+    t.value = str(t.value) # Remover las comillas
     return t
 
 # Definición de WORD

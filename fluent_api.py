@@ -1,4 +1,4 @@
-from coneccion_bd import insert_data, query_data
+from conexion_bd import insert_data_empleados, insert_data_usuarios, insert_data_clientes, insert_data_pedidos, insert_data_ventas
 
 class FluentQuery:
     def __init__(self):
@@ -19,16 +19,29 @@ class FluentQuery:
         self.query += f"DONDE {condition} "
         return self
 
-    # Método para insertar datos en la tabla
-    def insert(self, nombre, edad):
-        insert_data(nombre, edad)  # Usa la función insert_data para insertar en la base de datos
+    # Método para insertar datos en la tabla 'usuarios'
+    def insert_usuarios(self, nombre, edad):
+        insert_data_usuarios(nombre, edad)  # Usa la función insert_data para insertar en la base de datos
         return self
-
-    # Método para consultar datos de la tabla
-    def consultar(self):
-        results = query_data()  # Usa la función query_data para obtener los datos de la base de datos
-        for row in results:
-            print(row)
+    
+    # Método para insertar datos de la tabla 'empleados'
+    def insert_empleados(self, salario, puesto):
+        insert_data_empleados(salario, puesto)
+        return self
+    
+    # Método para insertar datos de la tabla 'clientes'
+    def insert_clientes(self, nombre, ciudad):
+        insert_data_clientes(nombre, ciudad)
+        return self
+    
+    # Método para insertar datos de la tabla 'pedidos'
+    def insert_pedidos(self, cliente_id):
+        insert_data_pedidos(cliente_id)
+        return self
+    
+    # Método para insertar datos de la tabla 'ventas'
+    def insert_ventas(self, producto):
+        insert_data_ventas(producto)
         return self
 
     # Método para construir la consulta completa

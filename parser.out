@@ -10,13 +10,21 @@ Rule 4     token -> NUMBER
 Rule 5     token -> GT
 Rule 6     token -> LT
 Rule 7     token -> EQ
+Rule 8     token -> STRING
+Rule 9     token -> LPAREN
+Rule 10    token -> RPAREN
+Rule 11    token -> COMMA
 
 Terminals, with rules where they appear
 
+COMMA                : 11
 EQ                   : 7
 GT                   : 5
+LPAREN               : 9
 LT                   : 6
 NUMBER               : 4
+RPAREN               : 10
+STRING               : 8
 WORD                 : 3
 error                : 
 
@@ -37,12 +45,20 @@ state 0
     (5) token -> . GT
     (6) token -> . LT
     (7) token -> . EQ
+    (8) token -> . STRING
+    (9) token -> . LPAREN
+    (10) token -> . RPAREN
+    (11) token -> . COMMA
 
     WORD            shift and go to state 3
     NUMBER          shift and go to state 4
     GT              shift and go to state 5
     LT              shift and go to state 6
     EQ              shift and go to state 7
+    STRING          shift and go to state 8
+    LPAREN          shift and go to state 9
+    RPAREN          shift and go to state 10
+    COMMA           shift and go to state 11
 
     statement                      shift and go to state 1
     token                          shift and go to state 2
@@ -56,14 +72,22 @@ state 1
     (5) token -> . GT
     (6) token -> . LT
     (7) token -> . EQ
+    (8) token -> . STRING
+    (9) token -> . LPAREN
+    (10) token -> . RPAREN
+    (11) token -> . COMMA
 
     WORD            shift and go to state 3
     NUMBER          shift and go to state 4
     GT              shift and go to state 5
     LT              shift and go to state 6
     EQ              shift and go to state 7
+    STRING          shift and go to state 8
+    LPAREN          shift and go to state 9
+    RPAREN          shift and go to state 10
+    COMMA           shift and go to state 11
 
-    token                          shift and go to state 8
+    token                          shift and go to state 12
 
 state 2
 
@@ -74,6 +98,10 @@ state 2
     GT              reduce using rule 2 (statement -> token .)
     LT              reduce using rule 2 (statement -> token .)
     EQ              reduce using rule 2 (statement -> token .)
+    STRING          reduce using rule 2 (statement -> token .)
+    LPAREN          reduce using rule 2 (statement -> token .)
+    RPAREN          reduce using rule 2 (statement -> token .)
+    COMMA           reduce using rule 2 (statement -> token .)
     $end            reduce using rule 2 (statement -> token .)
 
 
@@ -86,6 +114,10 @@ state 3
     GT              reduce using rule 3 (token -> WORD .)
     LT              reduce using rule 3 (token -> WORD .)
     EQ              reduce using rule 3 (token -> WORD .)
+    STRING          reduce using rule 3 (token -> WORD .)
+    LPAREN          reduce using rule 3 (token -> WORD .)
+    RPAREN          reduce using rule 3 (token -> WORD .)
+    COMMA           reduce using rule 3 (token -> WORD .)
     $end            reduce using rule 3 (token -> WORD .)
 
 
@@ -98,6 +130,10 @@ state 4
     GT              reduce using rule 4 (token -> NUMBER .)
     LT              reduce using rule 4 (token -> NUMBER .)
     EQ              reduce using rule 4 (token -> NUMBER .)
+    STRING          reduce using rule 4 (token -> NUMBER .)
+    LPAREN          reduce using rule 4 (token -> NUMBER .)
+    RPAREN          reduce using rule 4 (token -> NUMBER .)
+    COMMA           reduce using rule 4 (token -> NUMBER .)
     $end            reduce using rule 4 (token -> NUMBER .)
 
 
@@ -110,6 +146,10 @@ state 5
     GT              reduce using rule 5 (token -> GT .)
     LT              reduce using rule 5 (token -> GT .)
     EQ              reduce using rule 5 (token -> GT .)
+    STRING          reduce using rule 5 (token -> GT .)
+    LPAREN          reduce using rule 5 (token -> GT .)
+    RPAREN          reduce using rule 5 (token -> GT .)
+    COMMA           reduce using rule 5 (token -> GT .)
     $end            reduce using rule 5 (token -> GT .)
 
 
@@ -122,6 +162,10 @@ state 6
     GT              reduce using rule 6 (token -> LT .)
     LT              reduce using rule 6 (token -> LT .)
     EQ              reduce using rule 6 (token -> LT .)
+    STRING          reduce using rule 6 (token -> LT .)
+    LPAREN          reduce using rule 6 (token -> LT .)
+    RPAREN          reduce using rule 6 (token -> LT .)
+    COMMA           reduce using rule 6 (token -> LT .)
     $end            reduce using rule 6 (token -> LT .)
 
 
@@ -134,10 +178,78 @@ state 7
     GT              reduce using rule 7 (token -> EQ .)
     LT              reduce using rule 7 (token -> EQ .)
     EQ              reduce using rule 7 (token -> EQ .)
+    STRING          reduce using rule 7 (token -> EQ .)
+    LPAREN          reduce using rule 7 (token -> EQ .)
+    RPAREN          reduce using rule 7 (token -> EQ .)
+    COMMA           reduce using rule 7 (token -> EQ .)
     $end            reduce using rule 7 (token -> EQ .)
 
 
 state 8
+
+    (8) token -> STRING .
+
+    WORD            reduce using rule 8 (token -> STRING .)
+    NUMBER          reduce using rule 8 (token -> STRING .)
+    GT              reduce using rule 8 (token -> STRING .)
+    LT              reduce using rule 8 (token -> STRING .)
+    EQ              reduce using rule 8 (token -> STRING .)
+    STRING          reduce using rule 8 (token -> STRING .)
+    LPAREN          reduce using rule 8 (token -> STRING .)
+    RPAREN          reduce using rule 8 (token -> STRING .)
+    COMMA           reduce using rule 8 (token -> STRING .)
+    $end            reduce using rule 8 (token -> STRING .)
+
+
+state 9
+
+    (9) token -> LPAREN .
+
+    WORD            reduce using rule 9 (token -> LPAREN .)
+    NUMBER          reduce using rule 9 (token -> LPAREN .)
+    GT              reduce using rule 9 (token -> LPAREN .)
+    LT              reduce using rule 9 (token -> LPAREN .)
+    EQ              reduce using rule 9 (token -> LPAREN .)
+    STRING          reduce using rule 9 (token -> LPAREN .)
+    LPAREN          reduce using rule 9 (token -> LPAREN .)
+    RPAREN          reduce using rule 9 (token -> LPAREN .)
+    COMMA           reduce using rule 9 (token -> LPAREN .)
+    $end            reduce using rule 9 (token -> LPAREN .)
+
+
+state 10
+
+    (10) token -> RPAREN .
+
+    WORD            reduce using rule 10 (token -> RPAREN .)
+    NUMBER          reduce using rule 10 (token -> RPAREN .)
+    GT              reduce using rule 10 (token -> RPAREN .)
+    LT              reduce using rule 10 (token -> RPAREN .)
+    EQ              reduce using rule 10 (token -> RPAREN .)
+    STRING          reduce using rule 10 (token -> RPAREN .)
+    LPAREN          reduce using rule 10 (token -> RPAREN .)
+    RPAREN          reduce using rule 10 (token -> RPAREN .)
+    COMMA           reduce using rule 10 (token -> RPAREN .)
+    $end            reduce using rule 10 (token -> RPAREN .)
+
+
+state 11
+
+    (11) token -> COMMA .
+
+    WORD            reduce using rule 11 (token -> COMMA .)
+    NUMBER          reduce using rule 11 (token -> COMMA .)
+    GT              reduce using rule 11 (token -> COMMA .)
+    LT              reduce using rule 11 (token -> COMMA .)
+    EQ              reduce using rule 11 (token -> COMMA .)
+    STRING          reduce using rule 11 (token -> COMMA .)
+    LPAREN          reduce using rule 11 (token -> COMMA .)
+    RPAREN          reduce using rule 11 (token -> COMMA .)
+    COMMA           reduce using rule 11 (token -> COMMA .)
+    $end            reduce using rule 11 (token -> COMMA .)
+
+
+state 12
 
     (1) statement -> statement token .
 
@@ -146,5 +258,9 @@ state 8
     GT              reduce using rule 1 (statement -> statement token .)
     LT              reduce using rule 1 (statement -> statement token .)
     EQ              reduce using rule 1 (statement -> statement token .)
+    STRING          reduce using rule 1 (statement -> statement token .)
+    LPAREN          reduce using rule 1 (statement -> statement token .)
+    RPAREN          reduce using rule 1 (statement -> statement token .)
+    COMMA           reduce using rule 1 (statement -> statement token .)
     $end            reduce using rule 1 (statement -> statement token .)
 
