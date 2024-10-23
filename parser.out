@@ -1,69 +1,150 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    EQ
-    GT
-    LT
-
 Grammar
 
 Rule 0     S' -> statement
-Rule 1     statement -> WORD WORD WORD WORD
+Rule 1     statement -> statement token
+Rule 2     statement -> token
+Rule 3     token -> WORD
+Rule 4     token -> NUMBER
+Rule 5     token -> GT
+Rule 6     token -> LT
+Rule 7     token -> EQ
 
 Terminals, with rules where they appear
 
-EQ                   : 
-GT                   : 
-LT                   : 
-WORD                 : 1 1 1 1
+EQ                   : 7
+GT                   : 5
+LT                   : 6
+NUMBER               : 4
+WORD                 : 3
 error                : 
 
 Nonterminals, with rules where they appear
 
-statement            : 0
+statement            : 1 0
+token                : 1 2
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . statement
-    (1) statement -> . WORD WORD WORD WORD
+    (1) statement -> . statement token
+    (2) statement -> . token
+    (3) token -> . WORD
+    (4) token -> . NUMBER
+    (5) token -> . GT
+    (6) token -> . LT
+    (7) token -> . EQ
 
-    WORD            shift and go to state 2
+    WORD            shift and go to state 3
+    NUMBER          shift and go to state 4
+    GT              shift and go to state 5
+    LT              shift and go to state 6
+    EQ              shift and go to state 7
 
     statement                      shift and go to state 1
+    token                          shift and go to state 2
 
 state 1
 
     (0) S' -> statement .
+    (1) statement -> statement . token
+    (3) token -> . WORD
+    (4) token -> . NUMBER
+    (5) token -> . GT
+    (6) token -> . LT
+    (7) token -> . EQ
 
+    WORD            shift and go to state 3
+    NUMBER          shift and go to state 4
+    GT              shift and go to state 5
+    LT              shift and go to state 6
+    EQ              shift and go to state 7
 
+    token                          shift and go to state 8
 
 state 2
 
-    (1) statement -> WORD . WORD WORD WORD
+    (2) statement -> token .
 
-    WORD            shift and go to state 3
+    WORD            reduce using rule 2 (statement -> token .)
+    NUMBER          reduce using rule 2 (statement -> token .)
+    GT              reduce using rule 2 (statement -> token .)
+    LT              reduce using rule 2 (statement -> token .)
+    EQ              reduce using rule 2 (statement -> token .)
+    $end            reduce using rule 2 (statement -> token .)
 
 
 state 3
 
-    (1) statement -> WORD WORD . WORD WORD
+    (3) token -> WORD .
 
-    WORD            shift and go to state 4
+    WORD            reduce using rule 3 (token -> WORD .)
+    NUMBER          reduce using rule 3 (token -> WORD .)
+    GT              reduce using rule 3 (token -> WORD .)
+    LT              reduce using rule 3 (token -> WORD .)
+    EQ              reduce using rule 3 (token -> WORD .)
+    $end            reduce using rule 3 (token -> WORD .)
 
 
 state 4
 
-    (1) statement -> WORD WORD WORD . WORD
+    (4) token -> NUMBER .
 
-    WORD            shift and go to state 5
+    WORD            reduce using rule 4 (token -> NUMBER .)
+    NUMBER          reduce using rule 4 (token -> NUMBER .)
+    GT              reduce using rule 4 (token -> NUMBER .)
+    LT              reduce using rule 4 (token -> NUMBER .)
+    EQ              reduce using rule 4 (token -> NUMBER .)
+    $end            reduce using rule 4 (token -> NUMBER .)
 
 
 state 5
 
-    (1) statement -> WORD WORD WORD WORD .
+    (5) token -> GT .
 
-    $end            reduce using rule 1 (statement -> WORD WORD WORD WORD .)
+    WORD            reduce using rule 5 (token -> GT .)
+    NUMBER          reduce using rule 5 (token -> GT .)
+    GT              reduce using rule 5 (token -> GT .)
+    LT              reduce using rule 5 (token -> GT .)
+    EQ              reduce using rule 5 (token -> GT .)
+    $end            reduce using rule 5 (token -> GT .)
+
+
+state 6
+
+    (6) token -> LT .
+
+    WORD            reduce using rule 6 (token -> LT .)
+    NUMBER          reduce using rule 6 (token -> LT .)
+    GT              reduce using rule 6 (token -> LT .)
+    LT              reduce using rule 6 (token -> LT .)
+    EQ              reduce using rule 6 (token -> LT .)
+    $end            reduce using rule 6 (token -> LT .)
+
+
+state 7
+
+    (7) token -> EQ .
+
+    WORD            reduce using rule 7 (token -> EQ .)
+    NUMBER          reduce using rule 7 (token -> EQ .)
+    GT              reduce using rule 7 (token -> EQ .)
+    LT              reduce using rule 7 (token -> EQ .)
+    EQ              reduce using rule 7 (token -> EQ .)
+    $end            reduce using rule 7 (token -> EQ .)
+
+
+state 8
+
+    (1) statement -> statement token .
+
+    WORD            reduce using rule 1 (statement -> statement token .)
+    NUMBER          reduce using rule 1 (statement -> statement token .)
+    GT              reduce using rule 1 (statement -> statement token .)
+    LT              reduce using rule 1 (statement -> statement token .)
+    EQ              reduce using rule 1 (statement -> statement token .)
+    $end            reduce using rule 1 (statement -> statement token .)
 

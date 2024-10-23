@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'EQ GT LT WORDstatement : WORD WORD WORD WORD'
+_lr_signature = 'EQ GT LT NUMBER WORDstatement : statement token\n                 | tokentoken : WORD\n              | NUMBER\n              | GT\n              | LT\n              | EQ'
     
-_lr_action_items = {'WORD':([0,2,3,4,],[2,3,4,5,]),'$end':([1,5,],[0,-1,]),}
+_lr_action_items = {'WORD':([0,1,2,3,4,5,6,7,8,],[3,3,-2,-3,-4,-5,-6,-7,-1,]),'NUMBER':([0,1,2,3,4,5,6,7,8,],[4,4,-2,-3,-4,-5,-6,-7,-1,]),'GT':([0,1,2,3,4,5,6,7,8,],[5,5,-2,-3,-4,-5,-6,-7,-1,]),'LT':([0,1,2,3,4,5,6,7,8,],[6,6,-2,-3,-4,-5,-6,-7,-1,]),'EQ':([0,1,2,3,4,5,6,7,8,],[7,7,-2,-3,-4,-5,-6,-7,-1,]),'$end':([1,2,3,4,5,6,7,8,],[0,-2,-3,-4,-5,-6,-7,-1,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'token':([0,1,],[2,8,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,5 +27,11 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> WORD WORD WORD WORD','statement',4,'p_statement_select','dsl_parser.py',7),
+  ('statement -> statement token','statement',2,'p_statement_select','dsl_parser.py',7),
+  ('statement -> token','statement',1,'p_statement_select','dsl_parser.py',8),
+  ('token -> WORD','token',1,'p_token','dsl_parser.py',15),
+  ('token -> NUMBER','token',1,'p_token','dsl_parser.py',16),
+  ('token -> GT','token',1,'p_token','dsl_parser.py',17),
+  ('token -> LT','token',1,'p_token','dsl_parser.py',18),
+  ('token -> EQ','token',1,'p_token','dsl_parser.py',19),
 ]

@@ -33,9 +33,9 @@ def insert_data(nombre, edad):
     connection.close()
 
 # Consultar datos de la tabla
-def query_data():
+def query_data(query):
     connection, cursor = connect_db()
-    cursor.execute("SELECT * FROM usuarios")
+    cursor.execute(query)
     rows = cursor.fetchall()
     connection.close()
     return rows

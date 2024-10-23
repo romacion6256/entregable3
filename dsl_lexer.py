@@ -1,58 +1,67 @@
 import ply.lex as lex
 
-# Diccionario completo de traducción de USQL a SQL
+# Diccionario de traducción de USQL a SQL
 usql_to_sql = {
     "TRAEME": "SELECT",
     "TODO": "*",
-    "DE LA TABLA": "FROM",
+    "DE_LA_TABLA": "FROM",
     "DONDE": "WHERE",
-    "AGRUPANDO POR": "GROUP BY",
+    "AGRUPANDO_POR": "GROUP BY",
     "MEZCLANDO": "JOIN",
     "EN": "ON",
-    "LOS DISTINTOS": "DISTINCT",
+    "LOS_DISTINTOS": "DISTINCT",
     "CONTANDO": "COUNT",
-    "METE EN": "INSERT INTO",
-    "LOS VALORES": "VALUES",
+    "METE_EN": "INSERT INTO",
+    "LOS_VALORES": "VALUES",
     "ACTUALIZA": "UPDATE",
     "SETEA": "SET",
-    "BORRA DE LA": "DELETE FROM",
-    "ORDENA POR": "ORDER BY",
-    "COMO MUCHO": "LIMIT",
-    "WHERE DEL GROUP BY": "HAVING",
+    "BORRA_DE_LA": "DELETE FROM",
+    "ORDENA_POR": "ORDER BY",
+    "COMO_MUCHO": "LIMIT",
+    "WHERE_DEL_GROUP_BY": "HAVING",
     "EXISTE": "EXISTS",
-    "EN ESTO:": "IN",
+    "EN_ESTO:": "IN",
     "ENTRE": "BETWEEN",
-    "PARECIDO A": "LIKE",
-    "ES NULO": "IS NULL",
-    "ALTERA LA TABLA": "ALTER TABLE",
-    "AGREGA LA COLUMNA": "ADD COLUMN",
-    "ELIMINA LA COLUMNA": "DROP COLUMN",
-    "CREA LA TABLA": "CREATE TABLE",
-    "TIRA LA TABLA": "DROP TABLE",
-    "POR DEFECTO": "DEFAULT",
+    "PARECIDO_A": "LIKE",
+    "ES_NULO": "IS NULL",
+    "ALTERA_LA_TABLA": "ALTER TABLE",
+    "AGREGA_LA_COLUMNA": "ADD COLUMN",
+    "ELIMINA_LA_COLUMNA": "DROP COLUMN",
+    "CREA_LA_TABLA": "CREATE TABLE",
+    "TIRA_LA_TABLA": "DROP TABLE",
+    "POR_DEFECTO": "DEFAULT",
     "UNICO": "UNIQUE",
-    "CLAVE PRIMA": "PRIMARY KEY",
-    "CLAVE REFERENTE": "FOREIGN KEY",
-    "NO NULO": "NOT NULL",
-    "TRANSFORMA A": "CAST"
+    "CLAVE_PRIMA": "PRIMARY KEY",
+    "CLAVE_REFERENTE": "FOREIGN KEY",
+    "NO_NULO": "NOT NULL",
+    "TRANSFORMA_A": "CAST"
 }
 
-# Agregamos tokens para operadores
-tokens = ['WORD', 'GT', 'LT', 'EQ']
+# Definición de tokens
+tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER']
 
+# Ignorar espacios y tabulaciones
 t_ignore = ' \t'
 
-# Definimos tokens para operadores
+# Definición de tokens para operadores
 t_GT = r'>'
 t_LT = r'<'
 t_EQ = r'='
 
-# Definir cómo identificar palabras clave y convertirlas de USQL a SQL
+# Definición de números
+def t_NUMBER(t):
+    r'\d+'
+    t.value = int(t.value)
+    return t
+
+# Definición de WORD
 def t_WORD(t):
-    r'\w+'
-    t.type = 'WORD'
+    r'\w+'  # Captura palabras individuales
+    # Si está en el diccionario, convertimos
     if t.value.upper() in usql_to_sql:
-        t.value = usql_to_sql[t.value.upper()]  # Convierte USQL a SQL
+        t.value = usql_to_sql[t.value.upper()]  # Convierte palabras de USQL a SQL
+    else:
+        t.type = 'WORD'  # Aseguramos que sea tipo WORD si no está en el diccionario
     return t
 
 def t_error(t):
