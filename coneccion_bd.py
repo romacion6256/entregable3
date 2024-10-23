@@ -1,4 +1,4 @@
-import psycopg2
+import psycopg2 # type: ignore # Instalar con pip install psycopg2
 
 # Conectar a la base de datos PostgreSQL
 def connect_db():
