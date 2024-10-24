@@ -20,7 +20,8 @@ def p_token(t):
               | STRING
               | LPAREN
               | RPAREN
-              | COMMA'''
+              | COMMA
+              | ASTERISK'''
     t[0] = str(t[1])  # Convertir el valor del token a cadena
 
 # Manejo de errores

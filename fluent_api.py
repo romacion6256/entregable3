@@ -11,7 +11,7 @@ class FluentQuery:
 
     # Método para definir la tabla en la consulta
     def de_la_tabla(self, table_name):
-        self.query += f"DE LA TABLA {table_name} "
+        self.query += f"DE_LA_TABLA {table_name} "
         return self
 
     # Método para agregar la condición WHERE

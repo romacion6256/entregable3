@@ -43,6 +43,6 @@ if __name__ == "__main__":
         #     print(token)
 
         print("Parsing y ejecución...")
-        print(f'Ejecutando consulta: {consulta_usql}')
         consulta_a_sql = parse_input(consulta_usql)
+        print(f'Consulta en SQL: {consulta_a_sql}')
         execute_query(consulta_a_sql) 

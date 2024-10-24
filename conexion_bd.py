@@ -101,13 +101,20 @@ def insert_data_ventas(producto):
 # Consultar datos de la tabla
 def query_data(query):
     connection, cursor = connect_db()
-    cursor.execute(query)  # Ejecuta la consulta
-    connection.commit()    # Confirma la transacción
     rows = []
-    
-    # Si la consulta es un SELECT, obtener los resultados
-    if query.strip().upper().startswith("SELECT"):
-        rows = cursor.fetchall()
-    
-    connection.close()
+    try:
+        cursor.execute(query)  # Ejecuta la consulta
+        connection.commit()    # Confirma la transacción
+
+        # Si la consulta es un SELECT, obtener los resultados
+        if query.strip().upper().startswith("SELECT"):
+            rows = cursor.fetchall()
+
+        print("Consulta ejecutada con éxito")
+    except Exception as e:
+        print(f"Error al ejecutar la consulta: {e}")
+    finally:
+        connection.close()  # Asegurar que la conexión se cierre siempre
+
     return rows
+
