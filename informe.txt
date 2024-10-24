@@ -1,1 +1,4 @@
 Las consultas en USQL van sin punto y coma (;) al final, no es necesario. 
+FALTA MEJORAR FLUENT API
+FALTA LA DOCUMENTACION (ESTE INFORME)
+FALTAN LOS TEST (pycobertura)
