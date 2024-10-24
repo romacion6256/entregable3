@@ -1,0 +1,1 @@
+Las consultas en USQL van sin punto y coma (;) al final, no es necesario. 

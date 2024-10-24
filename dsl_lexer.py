@@ -39,7 +39,7 @@ usql_to_sql = {
 }
 
 # Definición de tokens
-tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA', 'ASTERISK']
+tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA', 'ASTERISK', 'DOT']
 
 # Ignorar espacios y tabulaciones
 t_ignore = ' \t'
@@ -52,6 +52,7 @@ t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_COMMA = r','
 t_ASTERISK = r'\*'
+t_DOT = r'\.'
 
 # Definición de números
 def t_NUMBER(t):
