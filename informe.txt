@@ -1,3 +1,39 @@
+En este entregable trabajamos con la implementación de un lenguaje sobre SQL con el fin de “traducir” el mismo al español. 
+
+Se utilizo la biblioteca PLY para lo mismo y se desarrollo una fluent api para la realización de consultas complejas
+permitiendo al usuario extender una consulta.
+
+La cobertura de un código mide que porcentaje de las líneas de este fueron ejecutadas a la hora de realizar
+las pruebas automáticas. Un porcentaje alto de cobertura nos dice que una gran parte del código fue revisada y probada. 
+
+Para realizar el análisis de la cobertura de nuestros test utilizamos PyCobertura. Esta como su nombre indica, es una
+herramienta para medir la cobertura de un código. Esta funciona en conjunto con framekworks como unitest (utilizado en nuestro caso). 
+El uso de este nos permitió identificar que áreas quedaban sin probar a partir de nuestras pruebas iniciales a los que 
+fuimos agregando nuevos test con el fin de abarcar una mayor cobertura. De esta manera conseguimos un total de 98% de cobertura 
+de nuestro código en total. 
+
+Para la utilización de pycobertura, se necesita un archivo del tipo XML, el cual en nuestro caso generamos a partir de 
+la herramienta coverage.py. Mediante los siguientes comandos:
+
+1. Coverage run -m unittest discover
+2. coverage xml  -> genera un archive del tipo xml
+3. pycobertura show --format text coverage.xml --source src/
+
+Donde este último utilizando el archivo xml generado anteriormente nos dio la siguiente información. 
+
+Filename            Stmts    Miss  Cover    Missing
+----------------  -------  ------  -------  ------------
+conexion_bd.py         52       0  100.00%
+dsl_lexer.py           30       2  93.33%   79-80
+dsl_parser.py          27       3  88.89%   30, 48-50
+fluent_api.py         120       0  100.00%
+parsetab.py            18       0  100.00%
+test/test_dsl.py      191       3  98.43%   105-106, 273
+TOTAL                 438       8  98.17%
+
+Mostrandonos las líneas de código que falta testear, el total de las mismas y en que archivo se encuentran.
+
+
 REQUERIMINETOS ANTERIORES A LA EJECUCION:
 Se debe crear una base de datos postgres de forma local (se puede hacer con la aplicacion pgAdmin 4) con los siguientes datos: 
 
@@ -21,20 +57,3 @@ NOTAS:
 para meter valores en la base de datos (luego de ejectuar el main por primera vez, deben ser comentadas
 de nuevo para evitar duplicados). Y la otra parte de lineas comentadas son las consultas que la letra 
 dice que tiene que cumplir como minimo. Estas se ejecutan a traves de la Fluent API.
-
-
-(explicar todo lo de la cobertura, comandos para verla, explicar tabla de abajo) (MOLLE)
-                                        |
-                                        |
-                                        v
-
-Name               Stmts   Miss  Cover   Missing
-------------------------------------------------
-conexion_bd.py        52      0   100%
-dsl_lexer.py          30      2    93%   79-80
-dsl_parser.py         28      3    89%   32, 50-52
-fluent_api.py        120      0   100%
-parsetab.py           18      0   100%
-test\test_dsl.py     191      3    98%   105-106, 273
-------------------------------------------------
-TOTAL                439      8    98%
