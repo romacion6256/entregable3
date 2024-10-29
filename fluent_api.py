@@ -152,10 +152,10 @@ class FluentQuery:
         return self
     
     # Método para insertar datos de la tabla 'pedidos'
+    
     def insert_pedidos(self, cliente_id):
         insert_data_pedidos(cliente_id)
         return self
-    
     # Método para insertar datos de la tabla 'ventas'
     def insert_ventas(self, producto):
         insert_data_ventas(producto)
