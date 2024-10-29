@@ -1,9 +1,11 @@
+FALTA LA DOCUMENTACION (ESTE INFORME)
+FALTAN LOS TEST (pycobertura)
+
+Notas:
+
 Las consultas en USQL van sin punto y coma (;) al final, no es necesario.
 
 En el main, antes de entrar en el loop principal, hay unas lineas comentadas, que se deben descomentar, 
 para meter valores en la base de datos (luego de ejectuar el main por primera vez, deben ser comentadas
 de nuevo para evitar duplicados). Y la otra parte de lineas comentadas son las consultas que la letra 
 dice que tiene que cumplir como minimo. Estas se ejecutan a traves de la Fluent API.
-
-FALTA LA DOCUMENTACION (ESTE INFORME)
-FALTAN LOS TEST (pycobertura)

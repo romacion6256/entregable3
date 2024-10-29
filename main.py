@@ -37,6 +37,7 @@ if __name__ == "__main__":
     # fluent.insert_ventas("Tablet")
     
     ######################################################################################################################
+    
     # CONSULTAS DE LA LETRA (DESCOMENTAR LA QUE SE QUIERA PROBAR Y COMENTAR LAS DEMÁS PARA EVITAR CONFLICTOS DE EJECUCIÓN)
 
     # Consulta para obtener todos los datos de la tabla 'usuarios'

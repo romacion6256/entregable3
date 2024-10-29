@@ -31,21 +31,14 @@ def p_token(t):
 def p_error(t):
     print(f"Error sintáctico: {t}")
 
-# Función que ejecuta la consulta
 def execute_query(query):
-    connection, cursor = connect_db()
-    try:
-        cursor.execute(query)
-        connection.commit()
-        if query.strip().upper().startswith("SELECT"):
-            results = cursor.fetchall()
-            return results if results is not None else []  # Asegura retorno de lista
-    except Exception as e:
-        print(f"Error al ejecutar la consulta: {e}")
-        raise
-    finally:
-        connection.close()
-
+    results = query_data(query)  # Llama a la función de la base de datos
+    print("Resultados de la consulta:")
+    if not results:
+        print("No hay resultados")
+        return
+    for row in results:
+        print(row)
         
 def parse_input(data):
     # Procesar la entrada y generar la consulta SQL
