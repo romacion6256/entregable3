@@ -51,7 +51,4 @@ def parse_input(data):
         # Lanza una excepción con un mensaje específico si hay un error en el análisis
         raise Exception("Error al analizar la consulta SQL: consulta inválida") from e
 
-
 parser = yacc.yacc()
-
-
