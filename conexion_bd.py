@@ -1,6 +1,5 @@
 import psycopg2 # type: ignore # Instalar con pip install psycopg2
 
-# Conectar a la base de datos PostgreSQL
 def connect_db():
     connection = psycopg2.connect(
         dbname="prog_avanzada",  # Nombre de tu base de datos
@@ -98,6 +97,7 @@ def insert_data_ventas(producto):
     connection.commit()
     connection.close()
 
+
 # Consultar datos de la tabla
 def query_data(query):
     connection, cursor = connect_db()
@@ -117,4 +117,3 @@ def query_data(query):
         connection.close()  # Asegurar que la conexión se cierre siempre
 
     return rows
-

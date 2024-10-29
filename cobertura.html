@@ -1,0 +1,2189 @@
+<html>
+  <head>
+    <title>pycobertura report</title>
+    <meta charset="UTF-8">
+    <style>
+/*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+/**
+ * 1. Set default font family to sans-serif.
+ * 2. Prevent iOS text size adjust after orientation change, without disabling
+ *    user zoom.
+ */
+
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 2 */
+  -webkit-text-size-adjust: 100%; /* 2 */
+}
+
+/**
+ * Remove default margin.
+ */
+
+body {
+  margin: 0;
+}
+
+/* HTML5 display definitions
+   ========================================================================== */
+
+/**
+ * Correct `block` display not defined for any HTML5 element in IE 8/9.
+ * Correct `block` display not defined for `details` or `summary` in IE 10/11
+ * and Firefox.
+ * Correct `block` display not defined for `main` in IE 11.
+ */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+/**
+ * 1. Correct `inline-block` display not defined in IE 8/9.
+ * 2. Normalize vertical alignment of `progress` in Chrome, Firefox, and Opera.
+ */
+
+audio,
+canvas,
+progress,
+video {
+  display: inline-block; /* 1 */
+  vertical-align: baseline; /* 2 */
+}
+
+/**
+ * Prevent modern browsers from displaying `audio` without controls.
+ * Remove excess height in iOS 5 devices.
+ */
+
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+
+/**
+ * Address `[hidden]` styling not present in IE 8/9/10.
+ * Hide the `template` element in IE 8/9/11, Safari, and Firefox < 22.
+ */
+
+[hidden],
+template {
+  display: none;
+}
+
+/* Links
+   ========================================================================== */
+
+/**
+ * Remove the gray background color from active links in IE 10.
+ */
+
+a {
+  background-color: transparent;
+}
+
+/**
+ * Improve readability when focused and also mouse hovered in all browsers.
+ */
+
+a:active,
+a:hover {
+  outline: 0;
+}
+
+/* Text-level semantics
+   ========================================================================== */
+
+/**
+ * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+ */
+
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/**
+ * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+ */
+
+b,
+strong {
+  font-weight: bold;
+}
+
+/**
+ * Address styling not present in Safari and Chrome.
+ */
+
+dfn {
+  font-style: italic;
+}
+
+/**
+ * Address variable `h1` font-size and margin within `section` and `article`
+ * contexts in Firefox 4+, Safari, and Chrome.
+ */
+
+h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+/**
+ * Address styling not present in IE 8/9.
+ */
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+ */
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+/* Embedded content
+   ========================================================================== */
+
+/**
+ * Remove border when inside `a` element in IE 8/9/10.
+ */
+
+img {
+  border: 0;
+}
+
+/**
+ * Correct overflow not hidden in IE 9/10/11.
+ */
+
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/* Grouping content
+   ========================================================================== */
+
+/**
+ * Address margin not present in IE 8/9 and Safari.
+ */
+
+figure {
+  margin: 1em 40px;
+}
+
+/**
+ * Address differences between Firefox and other browsers.
+ */
+
+hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+/**
+ * Contain overflow in all browsers.
+ */
+
+pre {
+  overflow: auto;
+}
+
+/**
+ * Address odd `em`-unit font size rendering in all browsers.
+ */
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* Forms
+   ========================================================================== */
+
+/**
+ * Known limitation: by default, Chrome and Safari on OS X allow very limited
+ * styling of `select`, unless a `border` property is set.
+ */
+
+/**
+ * 1. Correct color not being inherited.
+ *    Known issue: affects color of disabled elements.
+ * 2. Correct font properties not being inherited.
+ * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0; /* 3 */
+}
+
+/**
+ * Address `overflow` set to `hidden` in IE 8/9/10/11.
+ */
+
+button {
+  overflow: visible;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Firefox, IE 8/9/10/11, and Opera.
+ * Correct `select` style inheritance in Firefox.
+ */
+
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ */
+
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * Remove inner padding and border in Firefox 4+.
+ */
+
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+
+input {
+  line-height: normal;
+}
+
+/**
+ * It's recommended that you don't attempt to style these elements.
+ * Firefox's implementation doesn't respect box-sizing, padding, or width.
+ *
+ * 1. Address box sizing set to `content-box` in IE 8/9/10.
+ * 2. Remove excess padding in IE 8/9/10.
+ */
+
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Fix the cursor style for Chrome's increment/decrement buttons. For certain
+ * `font-size` values of the `input`, it causes the cursor style of the
+ * decrement button to change from `default` to `text`.
+ */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  height: auto;
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari and Chrome
+ *    (include `-moz` to future-proof).
+ */
+
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box; /* 2 */
+  box-sizing: content-box;
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari and Chrome on OS X.
+ * Safari (but not Chrome) clips the cancel button when the search input has
+ * padding (and `textfield` appearance).
+ */
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/**
+ * Define consistent border, margin, and padding.
+ */
+
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/**
+ * 1. Correct `color` not being inherited in IE 8/9/10/11.
+ * 2. Remove padding so people aren't caught out if they zero out fieldsets.
+ */
+
+legend {
+  border: 0; /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * Remove default vertical scrollbar in IE 8/9/10/11.
+ */
+
+textarea {
+  overflow: auto;
+}
+
+/**
+ * Don't inherit the `font-weight` (applied by a rule above).
+ * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
+ */
+
+optgroup {
+  font-weight: bold;
+}
+
+/* Tables
+   ========================================================================== */
+
+/**
+ * Remove most spacing between table cells.
+ */
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+}
+/*
+* Skeleton V2.0.4
+* Copyright 2014, Dave Gamache
+* www.getskeleton.com
+* Free to use under the MIT license.
+* http://www.opensource.org/licenses/mit-license.php
+* 12/29/2014
+*/
+
+
+/* Table of contents
+––––––––––––––––––––––––––––––––––––––––––––––––––
+- Grid
+- Base Styles
+- Typography
+- Links
+- Buttons
+- Forms
+- Lists
+- Code
+- Tables
+- Spacing
+- Utilities
+- Clearing
+- Media Queries
+*/
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box; }
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box; }
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    width: 85%;
+    padding: 0; }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .container {
+    width: 80%; }
+  .column,
+  .columns {
+    margin-left: 4%; }
+  .column:first-child,
+  .columns:first-child {
+    margin-left: 0; }
+
+  .one.column,
+  .one.columns                    { width: 4.66666666667%; }
+  .two.columns                    { width: 13.3333333333%; }
+  .three.columns                  { width: 22%;            }
+  .four.columns                   { width: 30.6666666667%; }
+  .five.columns                   { width: 39.3333333333%; }
+  .six.columns                    { width: 48%;            }
+  .seven.columns                  { width: 56.6666666667%; }
+  .eight.columns                  { width: 65.3333333333%; }
+  .nine.columns                   { width: 74.0%;          }
+  .ten.columns                    { width: 82.6666666667%; }
+  .eleven.columns                 { width: 91.3333333333%; }
+  .twelve.columns                 { width: 100%; margin-left: 0; }
+
+  .one-third.column               { width: 30.6666666667%; }
+  .two-thirds.column              { width: 65.3333333333%; }
+
+  .one-half.column                { width: 48%; }
+
+  /* Offsets */
+  .offset-by-one.column,
+  .offset-by-one.columns          { margin-left: 8.66666666667%; }
+  .offset-by-two.column,
+  .offset-by-two.columns          { margin-left: 17.3333333333%; }
+  .offset-by-three.column,
+  .offset-by-three.columns        { margin-left: 26%;            }
+  .offset-by-four.column,
+  .offset-by-four.columns         { margin-left: 34.6666666667%; }
+  .offset-by-five.column,
+  .offset-by-five.columns         { margin-left: 43.3333333333%; }
+  .offset-by-six.column,
+  .offset-by-six.columns          { margin-left: 52%;            }
+  .offset-by-seven.column,
+  .offset-by-seven.columns        { margin-left: 60.6666666667%; }
+  .offset-by-eight.column,
+  .offset-by-eight.columns        { margin-left: 69.3333333333%; }
+  .offset-by-nine.column,
+  .offset-by-nine.columns         { margin-left: 78.0%;          }
+  .offset-by-ten.column,
+  .offset-by-ten.columns          { margin-left: 86.6666666667%; }
+  .offset-by-eleven.column,
+  .offset-by-eleven.columns       { margin-left: 95.3333333333%; }
+
+  .offset-by-one-third.column,
+  .offset-by-one-third.columns    { margin-left: 34.6666666667%; }
+  .offset-by-two-thirds.column,
+  .offset-by-two-thirds.columns   { margin-left: 69.3333333333%; }
+
+  .offset-by-one-half.column,
+  .offset-by-one-half.columns     { margin-left: 52%; }
+
+}
+
+
+/* Base Styles
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/* NOTE
+html is set to 62.5% so that all the REM measurements throughout Skeleton
+are based on 10px sizing. So basically 1.5rem = 15px :) */
+html {
+  font-size: 62.5%; }
+body {
+  font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.6;
+  font-weight: 400;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222; }
+
+
+/* Typography
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 2rem;
+  font-weight: 300; }
+h1 { font-size: 4.0rem; line-height: 1.2;  letter-spacing: -.1rem;}
+h2 { font-size: 3.6rem; line-height: 1.25; letter-spacing: -.1rem; }
+h3 { font-size: 3.0rem; line-height: 1.3;  letter-spacing: -.1rem; }
+h4 { font-size: 2.4rem; line-height: 1.35; letter-spacing: -.08rem; }
+h5 { font-size: 1.8rem; line-height: 1.5;  letter-spacing: -.05rem; }
+h6 { font-size: 1.5rem; line-height: 1.6;  letter-spacing: 0; }
+
+/* Larger than phablet */
+@media (min-width: 550px) {
+  h1 { font-size: 5.0rem; }
+  h2 { font-size: 4.2rem; }
+  h3 { font-size: 3.6rem; }
+  h4 { font-size: 3.0rem; }
+  h5 { font-size: 2.4rem; }
+  h6 { font-size: 1.5rem; }
+}
+
+p {
+  margin-top: 0; }
+
+
+/* Links
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a {
+  color: #1EAEDB; }
+a:hover {
+  color: #0FA0CE; }
+
+
+/* Buttons
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.button,
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+  display: inline-block;
+  height: 38px;
+  padding: 0 30px;
+  color: #555;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 38px;
+  letter-spacing: .1rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+  box-sizing: border-box; }
+.button:hover,
+button:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+input[type="button"]:hover,
+.button:focus,
+button:focus,
+input[type="submit"]:focus,
+input[type="reset"]:focus,
+input[type="button"]:focus {
+  color: #333;
+  border-color: #888;
+  outline: 0; }
+.button.button-primary,
+button.button-primary,
+input[type="submit"].button-primary,
+input[type="reset"].button-primary,
+input[type="button"].button-primary {
+  color: #FFF;
+  background-color: #33C3F0;
+  border-color: #33C3F0; }
+.button.button-primary:hover,
+button.button-primary:hover,
+input[type="submit"].button-primary:hover,
+input[type="reset"].button-primary:hover,
+input[type="button"].button-primary:hover,
+.button.button-primary:focus,
+button.button-primary:focus,
+input[type="submit"].button-primary:focus,
+input[type="reset"].button-primary:focus,
+input[type="button"].button-primary:focus {
+  color: #FFF;
+  background-color: #1EAEDB;
+  border-color: #1EAEDB; }
+
+
+/* Forms
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea,
+select {
+  height: 38px;
+  padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
+  background-color: #fff;
+  border: 1px solid #D1D1D1;
+  border-radius: 4px;
+  box-shadow: none;
+  box-sizing: border-box; }
+/* Removes awkward default styles on some inputs for iOS */
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+textarea {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none; }
+textarea {
+  min-height: 65px;
+  padding-top: 6px;
+  padding-bottom: 6px; }
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+  border: 1px solid #33C3F0;
+  outline: 0; }
+label,
+legend {
+  display: block;
+  margin-bottom: .5rem;
+  font-weight: 600; }
+fieldset {
+  padding: 0;
+  border-width: 0; }
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline; }
+label > .label-body {
+  display: inline-block;
+  margin-left: .5rem;
+  font-weight: normal; }
+
+
+/* Lists
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+ul {
+  list-style: circle inside; }
+ol {
+  list-style: decimal inside; }
+ol, ul {
+  padding-left: 0;
+  margin-top: 0; }
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin: 1.5rem 0 1.5rem 3rem;
+  font-size: 90%; }
+li {
+  margin-bottom: 1rem; }
+
+
+/* Code
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+code {
+  padding: .2rem .5rem;
+  margin: 0 .2rem;
+  font-size: 90%;
+  white-space: nowrap;
+  background: #F1F1F1;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px; }
+pre > code {
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre; }
+
+
+/* Tables
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+th,
+td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #E1E1E1; }
+th:first-child,
+td:first-child {
+  padding-left: 0; }
+th:last-child,
+td:last-child {
+  padding-right: 0; }
+
+
+/* Spacing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+button,
+.button {
+  margin-bottom: 1rem; }
+input,
+textarea,
+select,
+fieldset {
+  margin-bottom: 1.5rem; }
+pre,
+blockquote,
+dl,
+figure,
+table,
+p,
+ul,
+ol,
+form {
+  margin-bottom: 2.5rem; }
+
+
+/* Utilities
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.u-full-width {
+  width: 100%;
+  box-sizing: border-box; }
+.u-max-full-width {
+  max-width: 100%;
+  box-sizing: border-box; }
+.u-pull-right {
+  float: right; }
+.u-pull-left {
+  float: left; }
+
+
+/* Misc
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+hr {
+  margin-top: 3rem;
+  margin-bottom: 3.5rem;
+  border-width: 0;
+  border-top: 1px solid #E1E1E1; }
+
+
+/* Clearing
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+/* Self Clearing Goodness */
+.container:after,
+.row:after,
+.u-cf {
+  content: "";
+  display: table;
+  clear: both; }
+
+
+/* Media Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+/*
+Note: The best way to structure the use of media queries is to create the queries
+near the relevant code. For example, if you wanted to change the styles for buttons
+on small devices, paste the mobile query code up in the buttons section and style it
+there.
+*/
+
+
+/* Larger than mobile */
+@media (min-width: 400px) {}
+
+/* Larger than phablet (also point when grid becomes active) */
+@media (min-width: 550px) {}
+
+/* Larger than tablet */
+@media (min-width: 750px) {}
+
+/* Larger than desktop */
+@media (min-width: 1000px) {}
+
+/* Larger than Desktop HD */
+@media (min-width: 1200px) {}
+.hit {background-color: #EAFFEA}
+.miss {background-color: #FFECEC}
+.container .code {margin-left: 0}
+pre {line-height: 1.3}
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>pycobertura report</h1>
+      <table class="u-full-width">
+        <thead>
+          <tr>
+            <th>Filename</th>
+            <th>Stmts</th>
+            <th>Miss</th>
+            <th>Cover</th>
+            <th>Missing</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="#conexion_bd.py">conexion_bd.py</a></td>
+            <td>52</td>
+            <td>2</td>
+            <td>96.15%</td>
+            <td>114-115</td>
+          </tr>
+          <tr>
+            <td><a href="#dsl_lexer.py">dsl_lexer.py</a></td>
+            <td>29</td>
+            <td>2</td>
+            <td>93.10%</td>
+            <td>82-83</td>
+          </tr>
+          <tr>
+            <td><a href="#dsl_parser.py">dsl_parser.py</a></td>
+            <td>28</td>
+            <td>1</td>
+            <td>96.43%</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td><a href="#fluent_api.py">fluent_api.py</a></td>
+            <td>120</td>
+            <td>62</td>
+            <td>48.33%</td>
+            <td>20-21, 24-25, 28-29, 32-33, 36-37, 56-57, 60-61, 64-65, 68-69, 72-73, 76-77, 80-81, 84-85, 88-89, 92-93, 96-97, 100-101, 104-105, 108-109, 112-113, 116-117, 120-121, 124-125, 128-129, 132-133, 136-137, 141-142, 146-147, 151-152, 156-157, 161-162</td>
+          </tr>
+          <tr>
+            <td><a href="#parsetab.py">parsetab.py</a></td>
+            <td>18</td>
+            <td>0</td>
+            <td>100.00%</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><a href="#test/test_dsl.py">test/test_dsl.py</a></td>
+            <td>86</td>
+            <td>1</td>
+            <td>98.84%</td>
+            <td>117</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL</td>
+            <td>333</td>
+            <td>68</td>
+            <td>79.58%</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+<h4 id="conexion_bd.py">conexion_bd.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+80 &nbsp;
+81 &nbsp;
+82 &nbsp;
+83 &nbsp;
+84 &nbsp;
+85 &nbsp;
+86 &nbsp;
+87 &nbsp;
+88 &nbsp;
+89 &nbsp;
+90 &nbsp;
+91 &nbsp;
+92 &nbsp;
+93 &nbsp;
+94 &nbsp;
+95 &nbsp;
+96 &nbsp;
+97 &nbsp;
+98 &nbsp;
+99 &nbsp;
+100 &nbsp;
+101 &nbsp;
+102 &nbsp;
+103 &nbsp;
+104 &nbsp;
+105 &nbsp;
+106 &nbsp;
+107 &nbsp;
+108 &nbsp;
+109 &nbsp;
+110 &nbsp;
+111 &nbsp;
+112 &nbsp;
+113 &nbsp;
+114 &nbsp;
+115 &nbsp;
+116 &nbsp;
+117 &nbsp;
+118 &nbsp;
+119 &nbsp;
+120 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">import psycopg2 # type: ignore # Instalar con pip install psycopg2
+</span><span class="noop">
+</span><span class="noop"># Conectar a la base de datos PostgreSQL
+</span><span class="hit">def connect_db():
+</span><span class="hit">    connection = psycopg2.connect(
+</span><span class="noop">        dbname=&#34;prog_avanzada&#34;,  # Nombre de tu base de datos
+</span><span class="noop">        user=&#34;postgres&#34;,          # Usuario de tu base de datos
+</span><span class="noop">        password=&#34;postgres&#34;,    # Contraseña del usuario
+</span><span class="noop">        host=&#34;localhost&#34;,           # Host de tu base de datos (en este caso, local)
+</span><span class="noop">        port=&#34;5432&#34;                 # Puerto por defecto de PostgreSQL
+</span><span class="noop">    )
+</span><span class="hit">    cursor = connection.cursor()
+</span><span class="hit">    return connection, cursor
+</span><span class="noop">
+</span><span class="hit">def create_table():
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="noop">    
+</span><span class="noop">    # Crear la tabla &#39;usuarios&#39;
+</span><span class="hit">    cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE IF NOT EXISTS usuarios (
+</span><span class="noop">            id SERIAL PRIMARY KEY,
+</span><span class="noop">            nombre VARCHAR(100),
+</span><span class="noop">            edad INTEGER
+</span><span class="noop">        )
+</span><span class="noop">    &#39;&#39;&#39;)
+</span><span class="noop">    
+</span><span class="noop">    # Crear la tabla &#39;clientes&#39;
+</span><span class="hit">    cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE IF NOT EXISTS clientes (
+</span><span class="noop">            id SERIAL PRIMARY KEY,
+</span><span class="noop">            nombre VARCHAR(100),
+</span><span class="noop">            ciudad VARCHAR(100)
+</span><span class="noop">        )
+</span><span class="noop">    &#39;&#39;&#39;)
+</span><span class="noop">    
+</span><span class="noop">    # Crear la tabla &#39;empleados&#39;
+</span><span class="hit">    cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE IF NOT EXISTS empleados (
+</span><span class="noop">            id SERIAL PRIMARY KEY,
+</span><span class="noop">            salario INTEGER,
+</span><span class="noop">            puesto VARCHAR(100)
+</span><span class="noop">        )
+</span><span class="noop">    &#39;&#39;&#39;)
+</span><span class="noop">    
+</span><span class="noop">    # Crear la tabla &#39;pedidos&#39;
+</span><span class="hit">    cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE IF NOT EXISTS pedidos (
+</span><span class="noop">            id SERIAL PRIMARY KEY,
+</span><span class="noop">            cliente_id INTEGER REFERENCES clientes(id)
+</span><span class="noop">        )
+</span><span class="noop">    &#39;&#39;&#39;)
+</span><span class="noop">    
+</span><span class="noop">    # Crear la tabla &#39;ventas&#39;
+</span><span class="hit">    cursor.execute(&#39;&#39;&#39;
+</span><span class="noop">        CREATE TABLE IF NOT EXISTS ventas (
+</span><span class="noop">            id SERIAL PRIMARY KEY,
+</span><span class="noop">            producto VARCHAR(100)
+</span><span class="noop">        )
+</span><span class="noop">    &#39;&#39;&#39;)
+</span><span class="noop">
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="noop"># Insertar datos en la tabla &#39;usuarios&#39;
+</span><span class="hit">def insert_data_usuarios(nombre, edad):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    cursor.execute(&#34;INSERT INTO usuarios (nombre, edad) VALUES (%s, %s)&#34;, (nombre, edad))
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">
+</span><span class="noop"># Insertar datos en la tabla &#39;empleados&#39;
+</span><span class="hit">def insert_data_empleados(salario, puesto):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    cursor.execute(&#34;INSERT INTO empleados (salario, puesto) VALUES (%s, %s)&#34;, (salario, puesto))
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">    
+</span><span class="noop">
+</span><span class="noop"># Insertar datos en la tabla &#39;clientes&#39;
+</span><span class="hit">def insert_data_clientes(nombre, ciudad):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    cursor.execute(&#34;INSERT INTO clientes (nombre, ciudad) VALUES (%s, %s)&#34;, (nombre, ciudad))
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">
+</span><span class="noop"># Insertar datos en la tabla &#39;pedidos&#39;
+</span><span class="hit">def insert_data_pedidos(cliente_id):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    cursor.execute(&#34;INSERT INTO pedidos (cliente_id) VALUES (%s)&#34;, (cliente_id,))
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">
+</span><span class="noop"># Insertar datos en la tabla &#39;ventas&#39;
+</span><span class="hit">def insert_data_ventas(producto):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    cursor.execute(&#34;INSERT INTO ventas (producto) VALUES (%s)&#34;, (producto,))
+</span><span class="hit">    connection.commit()
+</span><span class="hit">    connection.close()
+</span><span class="noop">
+</span><span class="noop"># Consultar datos de la tabla
+</span><span class="hit">def query_data(query):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    rows = []
+</span><span class="hit">    try:
+</span><span class="hit">        cursor.execute(query)  # Ejecuta la consulta
+</span><span class="hit">        connection.commit()    # Confirma la transacción
+</span><span class="noop">
+</span><span class="noop">        # Si la consulta es un SELECT, obtener los resultados
+</span><span class="hit">        if query.strip().upper().startswith(&#34;SELECT&#34;):
+</span><span class="hit">            rows = cursor.fetchall()
+</span><span class="noop">
+</span><span class="hit">        print(&#34;Consulta ejecutada con éxito&#34;)
+</span><span class="miss">    except Exception as e:
+</span><span class="miss">        print(f&#34;Error al ejecutar la consulta: {e}&#34;)
+</span><span class="noop">    finally:
+</span><span class="hit">        connection.close()  # Asegurar que la conexión se cierre siempre
+</span><span class="noop">
+</span><span class="hit">    return rows
+</span><span class="noop">
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="dsl_lexer.py">dsl_lexer.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+80 &nbsp;
+81 &nbsp;
+82 &nbsp;
+83 &nbsp;
+84 &nbsp;
+85 &nbsp;
+86 &nbsp;
+87 &nbsp;
+88 &nbsp;
+89 &nbsp;
+90 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">import ply.lex as lex
+</span><span class="noop">
+</span><span class="noop"># Diccionario de traducción de USQL a SQL
+</span><span class="hit">usql_to_sql = {
+</span><span class="noop">    &#34;TRAEME&#34;: &#34;SELECT&#34;,
+</span><span class="noop">    &#34;TODO&#34;: &#34;*&#34;,
+</span><span class="noop">    &#34;DE_LA_TABLA&#34;: &#34;FROM&#34;,
+</span><span class="noop">    &#34;DONDE&#34;: &#34;WHERE&#34;,
+</span><span class="noop">    &#34;AGRUPANDO_POR&#34;: &#34;GROUP BY&#34;,
+</span><span class="noop">    &#34;MEZCLANDO&#34;: &#34;JOIN&#34;,
+</span><span class="noop">    &#34;EN&#34;: &#34;ON&#34;,
+</span><span class="noop">    &#34;LOS_DISTINTOS&#34;: &#34;DISTINCT&#34;,
+</span><span class="noop">    &#34;CONTANDO&#34;: &#34;COUNT&#34;,
+</span><span class="noop">    &#34;METE_EN&#34;: &#34;INSERT INTO&#34;,
+</span><span class="noop">    &#34;LOS_VALORES&#34;: &#34;VALUES&#34;,
+</span><span class="noop">    &#34;ACTUALIZA&#34;: &#34;UPDATE&#34;,
+</span><span class="noop">    &#34;SETEA&#34;: &#34;SET&#34;,
+</span><span class="noop">    &#34;BORRA_DE_LA_TABLA&#34;: &#34;DELETE FROM&#34;,
+</span><span class="noop">    &#34;ORDENA_POR&#34;: &#34;ORDER BY&#34;,
+</span><span class="noop">    &#34;COMO_MUCHO&#34;: &#34;LIMIT&#34;,
+</span><span class="noop">    &#34;WHERE_DEL_GROUP_BY&#34;: &#34;HAVING&#34;,
+</span><span class="noop">    &#34;EXISTE&#34;: &#34;EXISTS&#34;,
+</span><span class="noop">    &#34;EN_ESTO:&#34;: &#34;IN&#34;,
+</span><span class="noop">    &#34;ENTRE&#34;: &#34;BETWEEN&#34;,
+</span><span class="noop">    &#34;PARECIDO_A&#34;: &#34;LIKE&#34;,
+</span><span class="noop">    &#34;ES_NULO&#34;: &#34;IS NULL&#34;,
+</span><span class="noop">    &#34;CAMBIA_LA_TABLA&#34;: &#34;ALTER TABLE&#34;,
+</span><span class="noop">    &#34;AGREGA_LA_COLUMNA&#34;: &#34;ADD COLUMN&#34;,
+</span><span class="noop">    &#34;ELIMINA_LA_COLUMNA&#34;: &#34;DROP COLUMN&#34;,
+</span><span class="noop">    &#34;CREA_LA_TABLA&#34;: &#34;CREATE TABLE&#34;,
+</span><span class="noop">    &#34;TIRA_LA_TABLA&#34;: &#34;DROP TABLE&#34;,
+</span><span class="noop">    &#34;POR_DEFECTO&#34;: &#34;DEFAULT&#34;,
+</span><span class="noop">    &#34;UNICO&#34;: &#34;UNIQUE&#34;,
+</span><span class="noop">    &#34;CLAVE_PRIMA&#34;: &#34;PRIMARY KEY&#34;,
+</span><span class="noop">    &#34;CLAVE_REFERENTE&#34;: &#34;FOREIGN KEY&#34;,
+</span><span class="noop">    &#34;NO_NULO&#34;: &#34;NOT NULL&#34;,
+</span><span class="noop">    &#34;TRANSFORMA_A&#34;: &#34;CAST&#34;,
+</span><span class="noop">    &#34;Y&#34;: &#34;AND&#34;,
+</span><span class="noop">}
+</span><span class="noop">
+</span><span class="noop"># Definición de tokens
+</span><span class="hit">tokens = [&#39;WORD&#39;, &#39;GT&#39;, &#39;LT&#39;, &#39;EQ&#39;, &#39;NUMBER&#39;, &#39;STRING&#39;, &#39;LPAREN&#39;, &#39;RPAREN&#39;, &#39;COMMA&#39;, &#39;ASTERISK&#39;, &#39;DOT&#39;]
+</span><span class="noop">
+</span><span class="noop"># Ignorar espacios y tabulaciones
+</span><span class="hit">t_ignore = &#39; \t&#39;
+</span><span class="noop">
+</span><span class="noop"># Definición de tokens para operadores
+</span><span class="hit">t_GT = r&#39;&gt;&#39;
+</span><span class="hit">t_LT = r&#39;&lt;&#39;
+</span><span class="hit">t_EQ = r&#39;=&#39;
+</span><span class="hit">t_LPAREN = r&#39;\(&#39;
+</span><span class="hit">t_RPAREN = r&#39;\)&#39;
+</span><span class="hit">t_COMMA = r&#39;,&#39;
+</span><span class="hit">t_ASTERISK = r&#39;\*&#39;
+</span><span class="hit">t_DOT = r&#39;\.&#39;
+</span><span class="noop">
+</span><span class="noop"># Definición de números
+</span><span class="hit">def t_NUMBER(t):
+</span><span class="noop">    r&#39;\d+&#39;
+</span><span class="hit">    t.value = int(t.value)
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="noop"># Definición de cadenas de texto
+</span><span class="hit">def t_STRING(t):
+</span><span class="noop">    r&#39;\&#39;[^\&#39;]*\&#39;&#39;
+</span><span class="hit">    t.value = str(t.value) # Remover las comillas
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="noop">def t_WORD(t):
+</span><span class="hit">    r&#39;\w+&#39;  # Captura palabras individuales
+</span><span class="noop">    # Si está en el diccionario, convertimos
+</span><span class="noop">    if t.value.upper() in usql_to_sql:
+</span><span class="hit">        t.value = usql_to_sql[t.value.upper()]  # Convierte palabras de USQL a SQL
+</span><span class="noop">    else:
+</span><span class="hit">        t.type = &#39;WORD&#39;  # Aseguramos que sea tipo WORD si no está en el diccionario
+</span><span class="hit">    return t
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="hit">def t_error(t):
+</span><span class="miss">    print(f&#34;Error léxico: {t.value[0]}&#34;)
+</span><span class="miss">    t.lexer.skip(1)
+</span><span class="noop">
+</span><span class="hit">lexer = lex.lex()
+</span><span class="noop">
+</span><span class="noop"># Función para procesar el input
+</span><span class="hit">def lex_input(data):
+</span><span class="hit">    lexer.input(data)
+</span><span class="hit">    return list(lexer)
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="dsl_parser.py">dsl_parser.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">import ply.yacc as yacc
+</span><span class="hit">from dsl_lexer import tokens  # Importar los tokens generados por el lexer
+</span><span class="hit">from conexion_bd import query_data
+</span><span class="hit">from conexion_bd import connect_db
+</span><span class="noop">
+</span><span class="noop">
+</span><span class="noop"># Regla para una consulta SELECT simple
+</span><span class="hit">def p_statement_select(t):
+</span><span class="noop">    &#39;&#39;&#39;statement : statement token
+</span><span class="noop">                 | token&#39;&#39;&#39;
+</span><span class="hit">    if len(t) == 3:  # Si hay más de un token, concatenar
+</span><span class="hit">        t[0] = t[1] + &#34; &#34; + t[2]
+</span><span class="noop">    else:
+</span><span class="hit">        t[0] = t[1]  # Si es solo un token, usarlo directamente
+</span><span class="noop">
+</span><span class="hit">def p_token(t):
+</span><span class="noop">    &#39;&#39;&#39;token : WORD
+</span><span class="noop">              | NUMBER
+</span><span class="noop">              | GT
+</span><span class="noop">              | LT
+</span><span class="noop">              | EQ
+</span><span class="noop">              | STRING
+</span><span class="noop">              | LPAREN
+</span><span class="noop">              | RPAREN
+</span><span class="noop">              | COMMA
+</span><span class="noop">              | ASTERISK
+</span><span class="noop">              | DOT&#39;&#39;&#39;
+</span><span class="hit">    t[0] = str(t[1])  # Convertir el valor del token a cadena
+</span><span class="noop">
+</span><span class="noop"># Manejo de errores
+</span><span class="hit">def p_error(t):
+</span><span class="miss">    print(f&#34;Error sintáctico: {t}&#34;)
+</span><span class="noop">
+</span><span class="noop"># Función que ejecuta la consulta
+</span><span class="hit">def execute_query(query):
+</span><span class="hit">    connection, cursor = connect_db()
+</span><span class="hit">    try:
+</span><span class="hit">        cursor.execute(query)
+</span><span class="hit">        connection.commit()
+</span><span class="hit">        if query.strip().upper().startswith(&#34;SELECT&#34;):
+</span><span class="hit">            results = cursor.fetchall()
+</span><span class="hit">            return results if results is not None else []  # Asegura retorno de lista
+</span><span class="hit">    except Exception as e:
+</span><span class="hit">        print(f&#34;Error al ejecutar la consulta: {e}&#34;)
+</span><span class="hit">        raise
+</span><span class="noop">    finally:
+</span><span class="hit">        connection.close()
+</span><span class="noop">
+</span><span class="noop">        
+</span><span class="hit">def parse_input(data):
+</span><span class="noop">    # Procesar la entrada y generar la consulta SQL
+</span><span class="hit">    result = parser.parse(data)  # Analiza la consulta
+</span><span class="hit">    return result  # Devuelve el resultado (la consulta SQL generada)
+</span><span class="noop">
+</span><span class="hit">parser = yacc.yacc()
+</span><span class="noop">
+</span><span class="noop">
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="fluent_api.py">fluent_api.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+80 &nbsp;
+81 &nbsp;
+82 &nbsp;
+83 &nbsp;
+84 &nbsp;
+85 &nbsp;
+86 &nbsp;
+87 &nbsp;
+88 &nbsp;
+89 &nbsp;
+90 &nbsp;
+91 &nbsp;
+92 &nbsp;
+93 &nbsp;
+94 &nbsp;
+95 &nbsp;
+96 &nbsp;
+97 &nbsp;
+98 &nbsp;
+99 &nbsp;
+100 &nbsp;
+101 &nbsp;
+102 &nbsp;
+103 &nbsp;
+104 &nbsp;
+105 &nbsp;
+106 &nbsp;
+107 &nbsp;
+108 &nbsp;
+109 &nbsp;
+110 &nbsp;
+111 &nbsp;
+112 &nbsp;
+113 &nbsp;
+114 &nbsp;
+115 &nbsp;
+116 &nbsp;
+117 &nbsp;
+118 &nbsp;
+119 &nbsp;
+120 &nbsp;
+121 &nbsp;
+122 &nbsp;
+123 &nbsp;
+124 &nbsp;
+125 &nbsp;
+126 &nbsp;
+127 &nbsp;
+128 &nbsp;
+129 &nbsp;
+130 &nbsp;
+131 &nbsp;
+132 &nbsp;
+133 &nbsp;
+134 &nbsp;
+135 &nbsp;
+136 &nbsp;
+137 &nbsp;
+138 &nbsp;
+139 &nbsp;
+140 &nbsp;
+141 &nbsp;
+142 &nbsp;
+143 &nbsp;
+144 &nbsp;
+145 &nbsp;
+146 &nbsp;
+147 &nbsp;
+148 &nbsp;
+149 &nbsp;
+150 &nbsp;
+151 &nbsp;
+152 &nbsp;
+153 &nbsp;
+154 &nbsp;
+155 &nbsp;
+156 &nbsp;
+157 &nbsp;
+158 &nbsp;
+159 &nbsp;
+160 &nbsp;
+161 &nbsp;
+162 &nbsp;
+163 &nbsp;
+164 &nbsp;
+165 &nbsp;
+166 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">from conexion_bd import insert_data_empleados, insert_data_usuarios, insert_data_clientes, insert_data_pedidos, insert_data_ventas
+</span><span class="noop">
+</span><span class="hit">class FluentQuery:
+</span><span class="hit">    def __init__(self):
+</span><span class="hit">        self.query = &#34;&#34;
+</span><span class="noop">
+</span><span class="hit">    def traeme(self, *args):
+</span><span class="hit">        self.query += f&#34;TRAEME {&#39;, &#39;.join(args)} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def de_la_tabla(self, table_name):
+</span><span class="hit">        self.query += f&#34;DE_LA_TABLA {table_name} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def donde(self, condition):
+</span><span class="hit">        self.query += f&#34;DONDE {condition} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">
+</span><span class="hit">    def agrupando_por(self, *args):
+</span><span class="miss">        self.query += f&#34;AGRUPANDO_POR {&#39;, &#39;.join(args)} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def mezclando(self, table_name):    
+</span><span class="miss">        self.query += f&#34;MEZCLANDO {table_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def en(self, condition):
+</span><span class="miss">        self.query += f&#34;EN {condition} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def los_distintos(self, *args):
+</span><span class="miss">        self.query += f&#34;LOS_DISTINTOS {&#39;, &#39;.join(args)} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def contando(self, *args):
+</span><span class="miss">        self.query += f&#34;CONTANDO {&#39;, &#39;.join(args)} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def mete_en(self, table_name, *args):
+</span><span class="hit">        self.query += f&#34;METE_EN {table_name} ({&#39;, &#39;.join(args)}) &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def los_valores(self, *args):
+</span><span class="hit">        self.query += f&#34;LOS_VALORES ({&#39;, &#39;.join(args)}) &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def actualiza(self, table_name):
+</span><span class="hit">        self.query += f&#34;ACTUALIZA {table_name} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def setea(self, condition):
+</span><span class="hit">        self.query += f&#34;SETEA {condition} &#34;
+</span><span class="hit">        return self
+</span><span class="noop">    
+</span><span class="hit">    def borra_de_la_tabla(self, table_name):
+</span><span class="miss">        self.query += f&#34;BORRA_DE_LA_TABLA {table_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def ordena_por(self, *args):
+</span><span class="miss">        self.query += f&#34;ORDENA_POR {&#39;, &#39;.join(args)} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def como_mucho(self, limit):
+</span><span class="miss">        self.query += f&#34;COMO_MUCHO {limit} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def where_del_group_by(self):
+</span><span class="miss">        self.query += f&#34;WHERE_DEL_GROUP_BY  &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def existe(self):
+</span><span class="miss">        self.query += f&#34;EXISTE &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def en_esto(self, condition):
+</span><span class="miss">        self.query += f&#34;EN_ESTO {condition} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def entre(self, condition1, condition2):
+</span><span class="miss">        self.query += f&#34;ENTRE {condition1} AND {condition2} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def parecido_a(self, condition):
+</span><span class="miss">        self.query += f&#34;PARECIDO_A {condition} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def es_nulo(self):  
+</span><span class="miss">        self.query += f&#34;ES_NULO &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def cambia_la_tabla(self, table_name):
+</span><span class="miss">        self.query += f&#34;CAMBIA_LA_TABLA {table_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def agrega_la_columna(self, column_name, data_type):
+</span><span class="miss">        self.query += f&#34;AGREGA_LA_COLUMNA {column_name} {data_type} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def elimina_la_columna(self, column_name):
+</span><span class="miss">        self.query += f&#34;ELIMINA_LA_COLUMNA {column_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def crea_la_tabla(self, table_name):
+</span><span class="miss">        self.query += f&#34;CREA_LA_TABLA {table_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def tira_la_tabla(self, table_name):
+</span><span class="miss">        self.query += f&#34;TIRA_LA_TABLA {table_name} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def por_defecto(self, value):
+</span><span class="miss">        self.query += f&#34;POR_DEFECTO {value} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def unico(self):
+</span><span class="miss">        self.query += f&#34;UNICO &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def clave_prima(self):
+</span><span class="miss">        self.query += f&#34;CLAVE_PRIMA &#34;
+</span><span class="miss">        return self 
+</span><span class="noop">
+</span><span class="hit">    def clave_referente(self, column_name, table_name, column_name2):
+</span><span class="miss">        self.query += f&#34;CLAVE_REFERENTE ({column_name}) {table_name} ({column_name2}) &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def no_nulo(self):
+</span><span class="miss">        self.query += f&#34;NO_NULO &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def transforma_a(self, data_type):
+</span><span class="miss">        self.query += f&#34;TRANSFORMA_A {data_type} &#34;
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="hit">    def y(self):
+</span><span class="miss">        self.query += f&#34;Y &#34;
+</span><span class="miss">        return self
+</span><span class="noop">
+</span><span class="noop">    # Método para insertar datos en la tabla &#39;usuarios&#39;
+</span><span class="hit">    def insert_usuarios(self, nombre, edad):
+</span><span class="miss">        insert_data_usuarios(nombre, edad)  # Usa la función insert_data para insertar en la base de datos
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="noop">    # Método para insertar datos de la tabla &#39;empleados&#39;
+</span><span class="hit">    def insert_empleados(self, salario, puesto):
+</span><span class="miss">        insert_data_empleados(salario, puesto)
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="noop">    # Método para insertar datos de la tabla &#39;clientes&#39;
+</span><span class="hit">    def insert_clientes(self, nombre, ciudad):
+</span><span class="miss">        insert_data_clientes(nombre, ciudad)
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="noop">    # Método para insertar datos de la tabla &#39;pedidos&#39;
+</span><span class="hit">    def insert_pedidos(self, cliente_id):
+</span><span class="miss">        insert_data_pedidos(cliente_id)
+</span><span class="miss">        return self
+</span><span class="noop">    
+</span><span class="noop">    # Método para insertar datos de la tabla &#39;ventas&#39;
+</span><span class="hit">    def insert_ventas(self, producto):
+</span><span class="miss">        insert_data_ventas(producto)
+</span><span class="miss">        return self
+</span><span class="noop">
+</span><span class="noop">    # Método para construir la consulta completa
+</span><span class="hit">    def build(self):
+</span><span class="hit">        return self.query.strip()
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="parsetab.py">parsetab.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="noop">
+</span><span class="noop"># parsetab.py
+</span><span class="noop"># This file is automatically generated. Do not edit.
+</span><span class="noop"># pylint: disable=W,C,R
+</span><span class="hit">_tabversion = &#39;3.10&#39;
+</span><span class="noop">
+</span><span class="hit">_lr_method = &#39;LALR&#39;
+</span><span class="noop">
+</span><span class="hit">_lr_signature = &#39;ASTERISK COMMA DOT EQ GT LPAREN LT NUMBER RPAREN STRING WORDstatement : statement token\n                 | tokentoken : WORD\n              | NUMBER\n              | GT\n              | LT\n              | EQ\n              | STRING\n              | LPAREN\n              | RPAREN\n              | COMMA\n              | ASTERISK\n              | DOT&#39;
+</span><span class="noop">    
+</span><span class="hit">_lr_action_items = {&#39;WORD&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[3,3,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;NUMBER&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[4,4,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;GT&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[5,5,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;LT&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[6,6,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;EQ&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[7,7,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;STRING&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[8,8,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;LPAREN&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[9,9,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;RPAREN&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[10,10,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;COMMA&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[11,11,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;ASTERISK&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[12,12,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;DOT&#39;:([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[13,13,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),&#39;$end&#39;:([1,2,3,4,5,6,7,8,9,10,11,12,13,14,],[0,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-13,-1,]),}
+</span><span class="noop">
+</span><span class="hit">_lr_action = {}
+</span><span class="hit">for _k, _v in _lr_action_items.items():
+</span><span class="hit">   for _x,_y in zip(_v[0],_v[1]):
+</span><span class="hit">      if not _x in _lr_action:  _lr_action[_x] = {}
+</span><span class="hit">      _lr_action[_x][_k] = _y
+</span><span class="hit">del _lr_action_items
+</span><span class="noop">
+</span><span class="hit">_lr_goto_items = {&#39;statement&#39;:([0,],[1,]),&#39;token&#39;:([0,1,],[2,14,]),}
+</span><span class="noop">
+</span><span class="hit">_lr_goto = {}
+</span><span class="hit">for _k, _v in _lr_goto_items.items():
+</span><span class="hit">   for _x, _y in zip(_v[0], _v[1]):
+</span><span class="hit">       if not _x in _lr_goto: _lr_goto[_x] = {}
+</span><span class="hit">       _lr_goto[_x][_k] = _y
+</span><span class="hit">del _lr_goto_items
+</span><span class="hit">_lr_productions = [
+</span><span class="noop">  (&#34;S&#39; -&gt; statement&#34;,&#34;S&#39;&#34;,1,None,None,None),
+</span><span class="noop">  (&#39;statement -&gt; statement token&#39;,&#39;statement&#39;,2,&#39;p_statement_select&#39;,&#39;dsl_parser.py&#39;,7),
+</span><span class="noop">  (&#39;statement -&gt; token&#39;,&#39;statement&#39;,1,&#39;p_statement_select&#39;,&#39;dsl_parser.py&#39;,8),
+</span><span class="noop">  (&#39;token -&gt; WORD&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,15),
+</span><span class="noop">  (&#39;token -&gt; NUMBER&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,16),
+</span><span class="noop">  (&#39;token -&gt; GT&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,17),
+</span><span class="noop">  (&#39;token -&gt; LT&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,18),
+</span><span class="noop">  (&#39;token -&gt; EQ&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,19),
+</span><span class="noop">  (&#39;token -&gt; STRING&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,20),
+</span><span class="noop">  (&#39;token -&gt; LPAREN&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,21),
+</span><span class="noop">  (&#39;token -&gt; RPAREN&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,22),
+</span><span class="noop">  (&#39;token -&gt; COMMA&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,23),
+</span><span class="noop">  (&#39;token -&gt; ASTERISK&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,24),
+</span><span class="noop">  (&#39;token -&gt; DOT&#39;,&#39;token&#39;,1,&#39;p_token&#39;,&#39;dsl_parser.py&#39;,25),
+</span><span class="noop">]
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h4 id="test/test_dsl.py">test/test_dsl.py</h4>
+<table class="code u-max-full-width">
+  <tbody>
+    <tr>
+      <td class="lineno">
+        <pre>1 &nbsp;
+2 &nbsp;
+3 &nbsp;
+4 &nbsp;
+5 &nbsp;
+6 &nbsp;
+7 &nbsp;
+8 &nbsp;
+9 &nbsp;
+10 &nbsp;
+11 &nbsp;
+12 &nbsp;
+13 &nbsp;
+14 &nbsp;
+15 &nbsp;
+16 &nbsp;
+17 &nbsp;
+18 &nbsp;
+19 &nbsp;
+20 &nbsp;
+21 &nbsp;
+22 &nbsp;
+23 &nbsp;
+24 &nbsp;
+25 &nbsp;
+26 &nbsp;
+27 &nbsp;
+28 &nbsp;
+29 &nbsp;
+30 &nbsp;
+31 &nbsp;
+32 &nbsp;
+33 &nbsp;
+34 &nbsp;
+35 &nbsp;
+36 &nbsp;
+37 &nbsp;
+38 &nbsp;
+39 &nbsp;
+40 &nbsp;
+41 &nbsp;
+42 &nbsp;
+43 &nbsp;
+44 &nbsp;
+45 &nbsp;
+46 &nbsp;
+47 &nbsp;
+48 &nbsp;
+49 &nbsp;
+50 &nbsp;
+51 &nbsp;
+52 &nbsp;
+53 &nbsp;
+54 &nbsp;
+55 &nbsp;
+56 &nbsp;
+57 &nbsp;
+58 &nbsp;
+59 &nbsp;
+60 &nbsp;
+61 &nbsp;
+62 &nbsp;
+63 &nbsp;
+64 &nbsp;
+65 &nbsp;
+66 &nbsp;
+67 &nbsp;
+68 &nbsp;
+69 &nbsp;
+70 &nbsp;
+71 &nbsp;
+72 &nbsp;
+73 &nbsp;
+74 &nbsp;
+75 &nbsp;
+76 &nbsp;
+77 &nbsp;
+78 &nbsp;
+79 &nbsp;
+80 &nbsp;
+81 &nbsp;
+82 &nbsp;
+83 &nbsp;
+84 &nbsp;
+85 &nbsp;
+86 &nbsp;
+87 &nbsp;
+88 &nbsp;
+89 &nbsp;
+90 &nbsp;
+91 &nbsp;
+92 &nbsp;
+93 &nbsp;
+94 &nbsp;
+95 &nbsp;
+96 &nbsp;
+97 &nbsp;
+98 &nbsp;
+99 &nbsp;
+100 &nbsp;
+101 &nbsp;
+102 &nbsp;
+103 &nbsp;
+104 &nbsp;
+105 &nbsp;
+106 &nbsp;
+107 &nbsp;
+108 &nbsp;
+109 &nbsp;
+110 &nbsp;
+111 &nbsp;
+112 &nbsp;
+113 &nbsp;
+114 &nbsp;
+115 &nbsp;
+116 &nbsp;
+</pre>
+      </td>
+      <td class="source">
+        <pre><span class="hit">import unittest
+</span><span class="hit">from dsl_lexer import lex_input
+</span><span class="hit">from dsl_parser import parse_input, execute_query
+</span><span class="hit">from fluent_api import FluentQuery
+</span><span class="hit">from conexion_bd import (
+</span><span class="noop">    create_table, connect_db, insert_data_usuarios, 
+</span><span class="hit">    insert_data_empleados, insert_data_clientes, 
+</span><span class="noop">    insert_data_pedidos, insert_data_ventas, query_data
+</span><span class="noop">)
+</span><span class="noop">
+</span><span class="noop">class TestConexionBD(unittest.TestCase):
+</span><span class="noop">    @classmethod
+</span><span class="hit">    def setUpClass(cls):
+</span><span class="hit">        create_table()  # Crear las tablas necesarias para los tests
+</span><span class="hit">
+</span><span class="hit">    def test_connect_db(self):
+</span><span class="noop">        connection, cursor = connect_db()
+</span><span class="hit">        self.assertIsNotNone(connection)
+</span><span class="hit">        self.assertIsNotNone(cursor)
+</span><span class="hit">        connection.close()
+</span><span class="hit">
+</span><span class="hit">    def test_insert_data_usuarios(self):
+</span><span class="noop">        insert_data_usuarios(&#34;Carlos&#34;, 35)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM usuarios WHERE nombre = &#39;Carlos&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(&#34;Carlos&#34; in row for row in results))
+</span><span class="hit">
+</span><span class="hit">    def test_insert_data_empleados(self):
+</span><span class="noop">        insert_data_empleados(2000, &#34;ingeniero&#34;)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM empleados WHERE puesto = &#39;ingeniero&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(&#34;ingeniero&#34; in row for row in results))
+</span><span class="hit">
+</span><span class="hit">    def test_insert_data_clientes(self):
+</span><span class="noop">        insert_data_clientes(&#34;Ana&#34;, &#34;Montevideo&#34;)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM clientes WHERE ciudad = &#39;Montevideo&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(&#34;Ana&#34; in row for row in results))
+</span><span class="hit">
+</span><span class="hit">    def test_insert_data_pedidos(self):
+</span><span class="noop">        insert_data_clientes(&#34;Cliente Pedido&#34;, &#34;Ciudad&#34;)
+</span><span class="hit">        insert_data_pedidos(1)  # Suponiendo que el cliente con id=1 existe
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM pedidos WHERE cliente_id = 1&#34;)
+</span><span class="hit">        self.assertTrue(len(results) &gt; 0)
+</span><span class="hit">
+</span><span class="hit">    def test_insert_data_ventas(self):
+</span><span class="noop">        insert_data_ventas(&#34;ProductoX&#34;)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM ventas WHERE producto = &#39;ProductoX&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(&#34;ProductoX&#34; in row for row in results))
+</span><span class="hit">
+</span><span class="hit">
+</span><span class="noop">class TestLexer(unittest.TestCase):
+</span><span class="noop">    def test_lex_input(self):
+</span><span class="hit">        consulta = &#34;TRAEME TODO DE_LA_TABLA usuarios DONDE edad &gt; 25&#34;
+</span><span class="hit">        tokens = lex_input(consulta)
+</span><span class="hit">        self.assertGreater(len(tokens), 0)
+</span><span class="hit">        self.assertEqual(tokens[0].value, &#34;SELECT&#34;)  # Cambiado a .value en lugar de .type
+</span><span class="hit">
+</span><span class="hit">
+</span><span class="noop">class TestParser(unittest.TestCase):
+</span><span class="noop">    def test_parse_select(self):
+</span><span class="hit">        consulta = &#34;TRAEME TODO DE_LA_TABLA usuarios DONDE edad &gt; 25&#34;
+</span><span class="hit">        sql_query = parse_input(consulta)
+</span><span class="hit">        self.assertEqual(sql_query.replace(&#34;  &#34;, &#34; &#34;).strip(), &#34;SELECT * FROM usuarios WHERE edad &gt; 25&#34;)
+</span><span class="hit">
+</span><span class="hit">    def test_parse_insert(self):
+</span><span class="noop">        consulta = &#34;METE_EN usuarios (nombre, edad) LOS_VALORES (&#39;Juan&#39;, 30)&#34;
+</span><span class="hit">        sql_query = parse_input(consulta)
+</span><span class="hit">        expected_query = &#34;INSERT INTO usuarios (nombre, edad) VALUES (&#39;Juan&#39;, 30)&#34;
+</span><span class="hit">        # Elimina todos los espacios en ambas cadenas para compararlas
+</span><span class="hit">        self.assertEqual(&#34;&#34;.join(sql_query.split()), &#34;&#34;.join(expected_query.split()))
+</span><span class="noop">
+</span><span class="hit">
+</span><span class="noop">    def test_invalid_query(self):
+</span><span class="noop">        consulta_invalida = &#34;SELECTO TODO FROME usuarios&#34;
+</span><span class="noop">        with self.assertRaises(Exception):
+</span><span class="hit">            sql_query = parse_input(consulta_invalida)  # Puede lanzar la excepción aquí si es una consulta mal estructurada
+</span><span class="hit">            execute_query(sql_query)  # Lanza excepción si la sintaxis es inválida
+</span><span class="hit">
+</span><span class="hit">
+</span><span class="noop">
+</span><span class="noop">class TestFluentAPI(unittest.TestCase):
+</span><span class="hit">    def test_fluent_query_select(self):
+</span><span class="hit">        fluent = FluentQuery().traeme(&#34;TODO&#34;).de_la_tabla(&#34;usuarios&#34;).donde(&#34;edad &gt; 25&#34;).build()
+</span><span class="hit">        self.assertEqual(fluent, &#34;TRAEME TODO DE_LA_TABLA usuarios DONDE edad &gt; 25&#34;)
+</span><span class="hit">
+</span><span class="noop">    def test_fluent_query_insert(self):
+</span><span class="hit">        fluent = FluentQuery().mete_en(&#34;usuarios&#34;, &#34;nombre&#34;, &#34;edad&#34;).los_valores(&#34;&#39;Carlos&#39;&#34;, &#34;28&#34;).build()
+</span><span class="hit">        self.assertEqual(fluent, &#34;METE_EN usuarios (nombre, edad) LOS_VALORES (&#39;Carlos&#39;, 28)&#34;)
+</span><span class="hit">
+</span><span class="noop">    def test_fluent_query_update(self):
+</span><span class="hit">        fluent = FluentQuery().actualiza(&#34;empleados&#34;).setea(&#34;salario = 3000&#34;).donde(&#34;puesto = &#39;ingeniero&#39;&#34;).build()
+</span><span class="hit">        self.assertEqual(fluent, &#34;ACTUALIZA empleados SETEA salario = 3000 DONDE puesto = &#39;ingeniero&#39;&#34;)
+</span><span class="hit">
+</span><span class="noop">
+</span><span class="noop">class TestMainFunctionality(unittest.TestCase):
+</span><span class="hit">    def test_execute_query_select(self):
+</span><span class="hit">        consulta = &#34;TRAEME TODO DE_LA_TABLA usuarios DONDE edad &gt; 25&#34;
+</span><span class="hit">        sql_query = parse_input(consulta)
+</span><span class="hit">        results = execute_query(sql_query)
+</span><span class="hit">        self.assertIsInstance(results, list)  # Espera que los resultados sean una lista, aunque esté vacía
+</span><span class="hit">
+</span><span class="noop">    def test_execute_query_insert(self):
+</span><span class="hit">        consulta = &#34;METE_EN usuarios (nombre, edad) LOS_VALORES (&#39;Luis&#39;, 32)&#34;
+</span><span class="hit">        sql_query = parse_input(consulta)
+</span><span class="hit">        result = execute_query(sql_query)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM usuarios WHERE nombre = &#39;Luis&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(&#34;Luis&#34; in row for row in results))  # Verifica que los datos se insertaron
+</span><span class="hit">
+</span><span class="noop">    def test_execute_query_update(self):
+</span><span class="hit">        consulta = &#34;ACTUALIZA usuarios SETEA edad = 40 DONDE nombre = &#39;Luis&#39;&#34;
+</span><span class="hit">        sql_query = parse_input(consulta)
+</span><span class="hit">        execute_query(sql_query)
+</span><span class="hit">        results = query_data(&#34;SELECT * FROM usuarios WHERE nombre = &#39;Luis&#39;&#34;)
+</span><span class="hit">        self.assertTrue(any(row[2] == 40 for row in results))  # Verifica que el campo edad se actualizó a 40
+</span><span class="hit">
+</span><span class="noop">
+</span><span class="noop">if __name__ == &#34;__main__&#34;:
+</span><span class="hit">    unittest.main()
+</span></pre>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+    </div>
+  </body>
+</html>

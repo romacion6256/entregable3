@@ -66,7 +66,6 @@ def t_STRING(t):
     t.value = str(t.value) # Remover las comillas
     return t
 
-# Definición de WORD
 def t_WORD(t):
     r'\w+'  # Captura palabras individuales
     # Si está en el diccionario, convertimos
@@ -75,6 +74,9 @@ def t_WORD(t):
     else:
         t.type = 'WORD'  # Aseguramos que sea tipo WORD si no está en el diccionario
     return t
+
+
+
 
 def t_error(t):
     print(f"Error léxico: {t.value[0]}")
