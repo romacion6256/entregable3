@@ -7,7 +7,7 @@ password="postgres",     # Contraseña del usuario
 host="localhost",        # Host de tu base de datos (en este caso, local)
 port="5432"              # Puerto por defecto de PostgreSQL
 
-Se debe instalar:
+Se debe instalar en la terminal de VSCode:
     - pip install ply
     - pip install psycopg2
     - pip install pycobertura
