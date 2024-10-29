@@ -11,7 +11,7 @@ from conexion_bd import (
 class TestConexionBD(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        create_table()  # Crear las tablas necesarias para los tests
+        create_table()  
 
     def test_connect_db(self):
         connection, cursor = connect_db()
@@ -36,7 +36,7 @@ class TestConexionBD(unittest.TestCase):
 
     def test_insert_data_pedidos(self):
         insert_data_clientes("Cliente Pedido", "Ciudad")
-        insert_data_pedidos(1)  # Suponiendo que el cliente con id=1 existe
+        insert_data_pedidos(1)  
         results = query_data("SELECT * FROM pedidos WHERE cliente_id = 1")
         self.assertTrue(len(results) > 0)
 
@@ -52,7 +52,7 @@ class TestLexer(unittest.TestCase):
         consulta = "TRAEME TODO DE_LA_TABLA usuarios DONDE edad > 25"
         tokens = lex_input(consulta)
         self.assertGreater(len(tokens), 0)
-        self.assertEqual(tokens[0].value, "SELECT")  # Cambiado a .value en lugar de .type
+        self.assertEqual(tokens[0].value, "SELECT")  
 
 
 class TestParser(unittest.TestCase):
@@ -65,20 +65,17 @@ class TestParser(unittest.TestCase):
         consulta = "METE_EN usuarios (nombre, edad) LOS_VALORES ('Juan', 30)"
         sql_query = parse_input(consulta)
         expected_query = "INSERT INTO usuarios (nombre, edad) VALUES ('Juan', 30)"
-        # Elimina todos los espacios en ambas cadenas para compararlas
         self.assertEqual("".join(sql_query.split()), "".join(expected_query.split()))
 
 
     def test_invalid_query(self):
         consulta_invalida = "SELECTO TODO FROME usuarios"
         try:
-            sql_query = parse_input(consulta_invalida)  # Espera que falle y lance una excepción
+            sql_query = parse_input(consulta_invalida)  
             execute_query(sql_query)
-            # Si llega aquí, significa que no se lanzó ninguna excepción, por lo que la prueba debería fallar.
             self.fail("Se esperaba una excepción debido a una consulta inválida, pero no se lanzó ninguna.")
         except Exception as e:
-            # Opcional: verifica el mensaje de la excepción
-            self.assertIn("consulta inválida", str(e))  # Comprueba que el mensaje de la excepción sea el esperado
+            self.assertIn("consulta inválida", str(e))  
 
 
 
@@ -169,77 +166,66 @@ class TestFluentQuery(unittest.TestCase):
         query = FluentQuery().traeme("nombre").no_nulo().y().transforma_a("VARCHAR(50)").build()
         self.assertEqual(query, "TRAEME nombre NO_NULO Y TRANSFORMA_A VARCHAR(50)")
     def test_donde_and_entre(self):
-        # Línea 32-33: Test de donde y entre
         query = FluentQuery().traeme("nombre").de_la_tabla("usuarios").donde("edad").entre(20, 30).build()
         self.assertEqual(query, "TRAEME nombre DE_LA_TABLA usuarios DONDE edad ENTRE 20 AND 30")
 
     def test_existe_and_es_nulo(self):
-        # Línea 100-101: Test de existe y es_nulo
         query = FluentQuery().traeme("nombre").de_la_tabla("usuarios").donde("nombre").existe().y().es_nulo().build()
         self.assertEqual(query, "TRAEME nombre DE_LA_TABLA usuarios DONDE nombre EXISTE Y ES_NULO")
 
     def test_elimina_la_columna(self):
-        # Línea 108-109: Test de elimina_la_columna
         query = FluentQuery().cambia_la_tabla("usuarios").elimina_la_columna("edad").build()
         self.assertEqual(query, "CAMBIA_LA_TABLA usuarios ELIMINA_LA_COLUMNA edad")
 
     def test_tira_la_tabla(self):
-        # Línea 141-142: Test de tira_la_tabla
         query = FluentQuery().tira_la_tabla("usuarios").build()
         self.assertEqual(query, "TIRA_LA_TABLA usuarios")
 
     def test_por_defecto(self):
-        # Línea 146-147: Test de por_defecto
         query = FluentQuery().crea_la_tabla("usuarios").agrega_la_columna("nombre", "VARCHAR").por_defecto("'Desconocido'").build()
         self.assertEqual(query, "CREA_LA_TABLA usuarios AGREGA_LA_COLUMNA nombre VARCHAR POR_DEFECTO 'Desconocido'")
 
     def test_unico_and_clave_prima(self):
-        # Línea 151-152: Test de unico y clave_prima
         query = FluentQuery().crea_la_tabla("usuarios").agrega_la_columna("id", "INT").unico().clave_prima().build()
         self.assertEqual(query, "CREA_LA_TABLA usuarios AGREGA_LA_COLUMNA id INT UNICO CLAVE_PRIMA")
 
     def test_clave_referente(self):
-        # Línea 156-157: Test de clave_referente
         query = FluentQuery().crea_la_tabla("usuarios").clave_referente("id", "clientes", "cliente_id").build()
         self.assertEqual(query, "CREA_LA_TABLA usuarios CLAVE_REFERENTE (id) clientes (cliente_id)")
 
     def test_transforma_a(self):
-        # Línea 161-162: Test de transforma_a
         query = FluentQuery().cambia_la_tabla("usuarios").transforma_a("BIGINT").build()
         self.assertEqual(query, "CAMBIA_LA_TABLA usuarios TRANSFORMA_A BIGINT")
     
     def test_los_distintos(self):
-        # Prueba para `los_distintos`
         query = FluentQuery().los_distintos("nombre", "edad").de_la_tabla("usuarios").build()
         self.assertEqual(query, "LOS_DISTINTOS nombre, edad DE_LA_TABLA usuarios")
 
     def test_insert_usuarios(self):
-        # Prueba para `insert_usuarios`
         FluentQuery().insert_usuarios("Pedro", 28)
         results = query_data("SELECT * FROM usuarios WHERE nombre = 'Pedro' AND edad = 28")
         self.assertTrue(any("Pedro" in row for row in results))
 
     def test_insert_empleados(self):
-        # Prueba para `insert_empleados`
+      
         FluentQuery().insert_empleados(3000, "developer")
         results = query_data("SELECT * FROM empleados WHERE puesto = 'developer' AND salario = 3000")
         self.assertTrue(any("developer" in row for row in results))
 
     def test_insert_clientes(self):
-        # Prueba para `insert_clientes`
+       
         FluentQuery().insert_clientes("Maria", "Madrid")
         results = query_data("SELECT * FROM clientes WHERE nombre = 'Maria' AND ciudad = 'Madrid'")
         self.assertTrue(any("Maria" in row for row in results))
 
     def test_insert_pedidos(self):
-        # Prueba para `insert_pedidos`
+        
         FluentQuery().insert_clientes("ClientePedido", "Ciudad")
-        FluentQuery().insert_pedidos(1)  # Asegurándose de que el cliente con id=1 existe
+        FluentQuery().insert_pedidos(1)  
         results = query_data("SELECT * FROM pedidos WHERE cliente_id = 1")
         self.assertTrue(len(results) > 0)
 
     def test_insert_ventas(self):
-        # Prueba para `insert_ventas`
         FluentQuery().insert_ventas("ProductoY")
         results = query_data("SELECT * FROM ventas WHERE producto = 'ProductoY'")
         self.assertTrue(any("ProductoY" in row for row in results))
@@ -252,21 +238,21 @@ class TestMainFunctionality(unittest.TestCase):
         consulta = "TRAEME TODO DE_LA_TABLA usuarios DONDE edad > 25"
         sql_query = parse_input(consulta)
         results = execute_query(sql_query)
-        self.assertIsInstance(results, list)  # Espera que los resultados sean una lista, aunque esté vacía
+        self.assertIsInstance(results, list)  
 
     def test_execute_query_insert(self):
         consulta = "METE_EN usuarios (nombre, edad) LOS_VALORES ('Luis', 32)"
         sql_query = parse_input(consulta)
         result = execute_query(sql_query)
         results = query_data("SELECT * FROM usuarios WHERE nombre = 'Luis'")
-        self.assertTrue(any("Luis" in row for row in results))  # Verifica que los datos se insertaron
+        self.assertTrue(any("Luis" in row for row in results))  
 
     def test_execute_query_update(self):
         consulta = "ACTUALIZA usuarios SETEA edad = 40 DONDE nombre = 'Luis'"
         sql_query = parse_input(consulta)
         execute_query(sql_query)
         results = query_data("SELECT * FROM usuarios WHERE nombre = 'Luis'")
-        self.assertTrue(any(row[2] == 40 for row in results))  # Verifica que el campo edad se actualizó a 40
+        self.assertTrue(any(row[2] == 40 for row in results))  
 
 
 if __name__ == "__main__":

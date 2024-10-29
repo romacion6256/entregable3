@@ -1,6 +1,5 @@
 import ply.lex as lex
 
-# Diccionario de traducción de USQL a SQL
 usql_to_sql = {
     "TRAEME": "SELECT",
     "TODO": "*",
@@ -38,7 +37,6 @@ usql_to_sql = {
     "Y": "AND",
 }
 
-# Definición de tokens
 tokens = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA', 'ASTERISK', 'DOT']
 
 # Ignorar espacios y tabulaciones
@@ -63,16 +61,15 @@ def t_NUMBER(t):
 # Definición de cadenas de texto
 def t_STRING(t):
     r'\'[^\']*\''
-    t.value = str(t.value) # Remover las comillas
+    t.value = str(t.value) 
     return t
 
 def t_WORD(t):
-    r'\w+'  # Captura palabras individuales
-    # Si está en el diccionario, convertimos
+    r'\w+' 
     if t.value.upper() in usql_to_sql:
-        t.value = usql_to_sql[t.value.upper()]  # Convierte palabras de USQL a SQL
+        t.value = usql_to_sql[t.value.upper()] 
     else:
-        t.type = 'WORD'  # Aseguramos que sea tipo WORD si no está en el diccionario
+        t.type = 'WORD'  
     return t
 
 def t_error(t):

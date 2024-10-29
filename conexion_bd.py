@@ -1,12 +1,12 @@
-import psycopg2 # type: ignore # Instalar con pip install psycopg2
+import psycopg2 
 
 def connect_db():
     connection = psycopg2.connect(
-        dbname="prog_avanzada",  # Nombre de tu base de datos
-        user="postgres",          # Usuario de tu base de datos
-        password="postgres",    # Contraseña del usuario
-        host="localhost",           # Host de tu base de datos (en este caso, local)
-        port="5432"                 # Puerto por defecto de PostgreSQL
+        dbname="prog_avanzada",  
+        user="postgres",         
+        password="postgres",    
+        host="localhost",           
+        port="5432"                 
     )
     cursor = connection.cursor()
     return connection, cursor
@@ -103,10 +103,9 @@ def query_data(query):
     connection, cursor = connect_db()
     rows = []
     try:
-        cursor.execute(query)  # Ejecuta la consulta
-        connection.commit()    # Confirma la transacción
+        cursor.execute(query)  
+        connection.commit()    
 
-        # Si la consulta es un SELECT, obtener los resultados
         if query.strip().upper().startswith("SELECT"):
             rows = cursor.fetchall()
 
@@ -114,6 +113,6 @@ def query_data(query):
     except Exception as e:
         print(f"Error al ejecutar la consulta: {e}")
     finally:
-        connection.close()  # Asegurar que la conexión se cierre siempre
+        connection.close()  
 
     return rows

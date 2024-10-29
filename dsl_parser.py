@@ -30,23 +30,21 @@ def p_error(t):
     print(f"Error sintáctico: {t}")
 
 def execute_query(query):
-    results = query_data(query)  # Llama a la función de la base de datos
+    results = query_data(query)  
     print("Resultados de la consulta:")
     if not results:
         print("No hay resultados")
-        return []  # Retorna una lista vacía si no hay resultados
+        return [] 
     for row in results:
         print(row)
-    return results  # Retorna los resultados de la consulta
+    return results  
 
         
 def parse_input(data):
     try:
-        # Procesar la entrada y generar la consulta SQL
-        result = parser.parse(data)  # Analiza la consulta
-        return result  # Devuelve el resultado (la consulta SQL generada)
+        result = parser.parse(data)  
+        return result  
     except Exception as e:
-        # Lanza una excepción con un mensaje específico si hay un error en el análisis
         raise Exception("Error al analizar la consulta SQL: consulta inválida") from e
 
 parser = yacc.yacc()
