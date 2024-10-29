@@ -75,9 +75,6 @@ def t_WORD(t):
         t.type = 'WORD'  # Aseguramos que sea tipo WORD si no está en el diccionario
     return t
 
-
-
-
 def t_error(t):
     print(f"Error léxico: {t.value[0]}")
     t.lexer.skip(1)

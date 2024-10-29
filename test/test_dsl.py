@@ -71,9 +71,15 @@ class TestParser(unittest.TestCase):
 
     def test_invalid_query(self):
         consulta_invalida = "SELECTO TODO FROME usuarios"
-        with self.assertRaises(Exception):
-            sql_query = parse_input(consulta_invalida)  # Puede lanzar la excepción aquí si es una consulta mal estructurada
-            execute_query(sql_query)  # Lanza excepción si la sintaxis es inválida
+        try:
+            sql_query = parse_input(consulta_invalida)  # Espera que falle y lance una excepción
+            execute_query(sql_query)
+            # Si llega aquí, significa que no se lanzó ninguna excepción, por lo que la prueba debería fallar.
+            self.fail("Se esperaba una excepción debido a una consulta inválida, pero no se lanzó ninguna.")
+        except Exception as e:
+            # Opcional: verifica el mensaje de la excepción
+            self.assertIn("consulta inválida", str(e))  # Comprueba que el mensaje de la excepción sea el esperado
+
 
 
 
