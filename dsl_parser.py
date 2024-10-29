@@ -1,8 +1,6 @@
 import ply.yacc as yacc
 from dsl_lexer import tokens  # Importar los tokens generados por el lexer
 from conexion_bd import query_data
-from conexion_bd import connect_db
-
 
 # Regla para una consulta SELECT simple
 def p_statement_select(t):

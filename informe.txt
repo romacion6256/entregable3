@@ -1,5 +1,32 @@
-FALTA LA DOCUMENTACION (ESTE INFORME)
+REQUERIMINETOS ANTERIORES A LA EJECUCION:
+Se debe crear una base de datos postgres de forma local (se puede hacer con la aplicacion pgAdmin 4) con los siguientes datos: 
 
+dbname="prog_avanzada",  # Nombre de tu base de datos
+user="postgres",         # Usuario de tu base de datos
+password="postgres",     # Contraseña del usuario
+host="localhost",        # Host de tu base de datos (en este caso, local)
+port="5432"              # Puerto por defecto de PostgreSQL
+
+Se debe instalar:
+    - pip install ply
+    - pip install psycopg2
+    - pip install pycobertura
+    - pip install coverage
+
+NOTAS:
+
+- Las consultas en USQL van sin punto y coma (;) al final, no es necesario. (Ejemplo: "TRAEME TODO DE_LA_TABLA usuarios")
+
+- En el main, antes de entrar en el loop principal, hay unas lineas comentadas, que se deben descomentar, 
+para meter valores en la base de datos (luego de ejectuar el main por primera vez, deben ser comentadas
+de nuevo para evitar duplicados). Y la otra parte de lineas comentadas son las consultas que la letra 
+dice que tiene que cumplir como minimo. Estas se ejecutan a traves de la Fluent API.
+
+
+(explicar todo lo de la cobertura, comandos para verla, explicar tabla de abajo) (MOLLE)
+                                        |
+                                        |
+                                        v
 
 Name               Stmts   Miss  Cover   Missing
 ------------------------------------------------
@@ -11,12 +38,3 @@ parsetab.py           18      0   100%
 test\test_dsl.py     191      3    98%   105-106, 273
 ------------------------------------------------
 TOTAL                439      8    98%
-
-Notas:
-
-Las consultas en USQL van sin punto y coma (;) al final, no es necesario.
-
-En el main, antes de entrar en el loop principal, hay unas lineas comentadas, que se deben descomentar, 
-para meter valores en la base de datos (luego de ejectuar el main por primera vez, deben ser comentadas
-de nuevo para evitar duplicados). Y la otra parte de lineas comentadas son las consultas que la letra 
-dice que tiene que cumplir como minimo. Estas se ejecutan a traves de la Fluent API.
