@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module dsl_parser</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">dsl_parser</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Clucas%5Conedrive%5Cescritorio%5Cum%5C2024%5C2do%20semestre%5Cprogramacion%20avanzada%5Centregable3%5Cdsl_parser.py">c:\users\lucas\onedrive\escritorio\um\2024\2do semestre\programacion avanzada\entregable3\dsl_parser.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="ply.yacc.html">ply.yacc</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-execute_query"><strong>execute_query</strong></a>(query)</dt></dl>
+ <dl><dt><a name="-p_error"><strong>p_error</strong></a>(t)</dt><dd><span class="code">#&nbsp;Manejo&nbsp;de&nbsp;errores</span></dd></dl>
+ <dl><dt><a name="-p_statement_select"><strong>p_statement_select</strong></a>(t)</dt><dd><span class="code">statement&nbsp;:&nbsp;statement&nbsp;token<br>
+|&nbsp;token</span></dd></dl>
+ <dl><dt><a name="-p_token"><strong>p_token</strong></a>(t)</dt><dd><span class="code">token&nbsp;:&nbsp;WORD<br>
+|&nbsp;NUMBER<br>
+|&nbsp;GT<br>
+|&nbsp;LT<br>
+|&nbsp;EQ<br>
+|&nbsp;STRING<br>
+|&nbsp;LPAREN<br>
+|&nbsp;RPAREN<br>
+|&nbsp;COMMA<br>
+|&nbsp;ASTERISK<br>
+|&nbsp;DOT</span></dd></dl>
+ <dl><dt><a name="-parse_input"><strong>parse_input</strong></a>(data)</dt></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>parser</strong> = &lt;ply.yacc.LRParser object&gt;<br>
+<strong>tokens</strong> = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA', 'ASTERISK', 'DOT']</td></tr></table>
+</body></html>

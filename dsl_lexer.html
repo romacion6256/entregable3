@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module dsl_lexer</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">dsl_lexer</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Clucas%5Conedrive%5Cescritorio%5Cum%5C2024%5C2do%20semestre%5Cprogramacion%20avanzada%5Centregable3%5Cdsl_lexer.py">c:\users\lucas\onedrive\escritorio\um\2024\2do semestre\programacion avanzada\entregable3\dsl_lexer.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="ply.lex.html">ply.lex</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-lex_input"><strong>lex_input</strong></a>(data)</dt><dd><span class="code">#&nbsp;Función&nbsp;para&nbsp;procesar&nbsp;el&nbsp;input</span></dd></dl>
+ <dl><dt><a name="-t_NUMBER"><strong>t_NUMBER</strong></a>(t)</dt><dd><span class="code">\d+</span></dd></dl>
+ <dl><dt><a name="-t_STRING"><strong>t_STRING</strong></a>(t)</dt><dd><span class="code">\'[^\']*\'</span></dd></dl>
+ <dl><dt><a name="-t_WORD"><strong>t_WORD</strong></a>(t)</dt><dd><span class="code">\w+</span></dd></dl>
+ <dl><dt><a name="-t_error"><strong>t_error</strong></a>(t)</dt></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>lexer</strong> = &lt;ply.lex.Lexer object&gt;<br>
+<strong>t_ASTERISK</strong> = r'\*'<br>
+<strong>t_COMMA</strong> = ','<br>
+<strong>t_DOT</strong> = r'\.'<br>
+<strong>t_EQ</strong> = '='<br>
+<strong>t_GT</strong> = '&gt;'<br>
+<strong>t_LPAREN</strong> = r'\('<br>
+<strong>t_LT</strong> = '&lt;'<br>
+<strong>t_RPAREN</strong> = r'\)'<br>
+<strong>t_ignore</strong> = ' <span class="repr">\t</span>'<br>
+<strong>tokens</strong> = ['WORD', 'GT', 'LT', 'EQ', 'NUMBER', 'STRING', 'LPAREN', 'RPAREN', 'COMMA', 'ASTERISK', 'DOT']<br>
+<strong>usql_to_sql</strong> = {'ACTUALIZA': 'UPDATE', 'AGREGA_LA_COLUMNA': 'ADD COLUMN', 'AGRUPANDO_POR': 'GROUP BY', 'BORRA_DE_LA_TABLA': 'DELETE FROM', 'CAMBIA_LA_TABLA': 'ALTER TABLE', 'CLAVE_PRIMA': 'PRIMARY KEY', 'CLAVE_REFERENTE': 'FOREIGN KEY', 'COMO_MUCHO': 'LIMIT', 'CONTANDO': 'COUNT', 'CREA_LA_TABLA': 'CREATE TABLE', ...}</td></tr></table>
+</body></html>
