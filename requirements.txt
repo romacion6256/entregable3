@@ -1,2 +1,2 @@
 ply
-psycode2
+psycopg2
